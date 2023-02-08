@@ -3,5 +3,5 @@
   import "../app.css";
 </script>
 
-<div>I am layout</div>
+<div class="text-blue-300 flex-1">I am layout</div>
 <slot />
