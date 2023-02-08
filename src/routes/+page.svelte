@@ -1,11 +1,5 @@
-<script>
-  console.log("Hello World!");
-</script>
 
-<div class="test">Hello World</div>
+<h1 class="text-3xl font-bold underline text-red-400">
+  Hello world!
+</h1>
 
-<style>
-  .test {
-    color:blue;
-  }
-</style>

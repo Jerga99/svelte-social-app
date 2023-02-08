@@ -1,6 +1,6 @@
 
 <script>
-  console.log("I am layout");
+  import "../app.css";
 </script>
 
 <div>I am layout</div>
