@@ -1,5 +1,14 @@
 
+<script>
+  let count = 0;
+</script>
 
 <div class="text-white">
-  I am a task manager page
+  <div>I am a task manager page - {count}</div>
+
+  <button on:click={() => {
+    count++;
+  }}>
+    Increment
+  </button>
 </div>
