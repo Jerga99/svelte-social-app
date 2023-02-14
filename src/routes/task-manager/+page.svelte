@@ -10,10 +10,6 @@
 
 </script>
 
-<div class="text-white">
-  {JSON.stringify(taskList)}
-</div>
-
 <div class="p-10 h-full">
   <div class="text-white text-2xl mb-6">Some List</div>
   <button class="text-xl mb-3 text-white font-bold cursor-pointer hover:underline flex items-start">
@@ -21,9 +17,9 @@
   </button>
   <div class="flex-it h-full">
     <div class="flex-it flex-row rounded-xl h-full">
-      <TaskList {listName} />
-      <TaskList listName="List 2"/>
-      <TaskList listName="Whatever"/>
+      {#each taskList as list (list.id)}
+        <TaskList listName={list.text} />
+      {/each}
     </div>
   </div>
 </div>
