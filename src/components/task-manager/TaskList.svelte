@@ -1,12 +1,14 @@
 <script>
   import TaskItem from "./TaskItem.svelte";
+
+  export let listName;
 </script>
 
 <div class="flex-it h-full w-80 max-w-sm min-h-full m-2 my-0">
   <div class="bg-slate-400 flex-it rounded-xl max-h-full border-2 border-gray-500">
     <div class="flex-it m-3">
       <div class="flex-it flex-row">
-        <div class="text-xl text-left font-bold mr-2">List 1</div>
+        <div class="text-xl text-left font-bold mr-2">{listName}</div>
         <div class="flex hover:text-red-600 items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +30,7 @@
       </div>
     </div>
     <div class="overflow-x-hidden overflow-y-auto with-scrollbar p-2">
-      <TaskItem />
+      <TaskItem taskDescription="Learn Svelte" />
       <TaskItem />
       <TaskItem />
       <TaskItem />
