@@ -5,7 +5,9 @@
     <button class="flex underline">Close</button>
   </div>
 {:else}
-  <slot />
+  <button>
+    <slot />
+  </button>
 {/if}
 
 
