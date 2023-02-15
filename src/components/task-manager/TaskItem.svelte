@@ -4,13 +4,15 @@
   export let task;
   let value = task.text;
 
+  function updateTask() {
+    alert("Update Task!");
+  }
+
 </script>
 
 <div class="flex-it border border-solid p-2 rounded-xl bg-slate-500 mb-2 cursor-pointer">
   <div class="flex-it">
-    <Editable bind:value on:whatever={() => {
-      alert("Editing was closed!");
-    }}>
+    <Editable bind:value on:editCancel={updateTask}>
       <div class="flex-it flex-row">
         <div class="flex flex-1">{task.text}</div>
         <div class="flex items-end hover:text-red-600">
