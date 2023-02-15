@@ -3,9 +3,10 @@ import { writable } from "svelte/store";
 
 function createStore() {
   const taskList = writable([]);
+  let i = 0;
 
-  setTimeout(() => {
-    taskList.set([1,2,3]);
+  setInterval(() => {
+    taskList.update((list) => [...list, i++])
   }, 1000);
 
   return taskList;
