@@ -5,11 +5,15 @@ function createStore() {
 
   const taskList = writable([], () => {
     let i = 0;
-    console.log("Subscribed to the store!");
-
-    setInterval(() => {
+   
+    const id = setInterval(() => {
+      console.log("Updating Value");
       taskList.update((list) => [...list, i++])
     }, 2000);
+
+    return function stop() {
+      clearInterval(id);
+    }
   });
   
   return taskList;

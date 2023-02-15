@@ -11,6 +11,10 @@
 
 <div class="p-10 h-full">
 
+  <a href="/" class="text-white">
+    GO HOME
+  </a>
+
   <div class="text-white">
     {JSON.stringify($taskListStore)}
   </div>
