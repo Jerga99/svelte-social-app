@@ -1,5 +1,6 @@
 <script>
   import TaskList from "../../components/task-manager/TaskList.svelte";
+  import { taskListStore } from "../../stores/tasks";
 
   const taskList = [
     {id: "l-1", text: "List 1", items: [{id: "t-1", text: "Task 1"},{id: "t-2", text: "Task 2"},{id: "t-3", text: "Task 3"}]},
@@ -10,6 +11,11 @@
 </script>
 
 <div class="p-10 h-full">
+
+  <div class="text-white">
+    {JSON.stringify(taskListStore)}
+  </div>
+
   <div class="text-white text-2xl mb-6">Some List</div>
   <button class="text-xl mb-3 text-white font-bold cursor-pointer hover:underline flex items-start">
     + Add List
