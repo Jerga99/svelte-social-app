@@ -1,7 +1,11 @@
 
 <script>
+  import { createEventDispatcher } from "svelte";
+  const dispatch = createEventDispatcher();
+
   export let value;
   let isEditing = false;
+
 </script>
 
 
@@ -9,7 +13,10 @@
   <div class="flex-it">
     <textarea bind:value />
     <button 
-      on:click={() => isEditing = false}
+      on:click={() => {
+        isEditing = false;
+        dispatch("whatever");
+      }}
       class="flex underline">Close
     </button>
     <div>{value}</div>
