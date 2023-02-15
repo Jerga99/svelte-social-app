@@ -1,5 +1,4 @@
 <script>
-  import { onDestroy } from "svelte";
   import TaskList from "../../components/task-manager/TaskList.svelte";
   import { taskListStore } from "../../stores/tasks";
 
@@ -8,28 +7,12 @@
     {id: "l-2", text: "List 2", items: [{id: "t-4", text: "Task 4"},{id: "t-5", text: "Task 5"},{id: "t-6", text: "Task 6"}]},
     {id: "l-3", text: "List 3", items: [{id: "t-7", text: "Task 7"},{id: "t-8", text: "Task 8"},{id: "t-9", text: "Task 9"}]},
   ];
-
-  let _taskList;
-
-  const unsub = taskListStore.subscribe((value) => {
-    console.log(value);
-    _taskList = value;
-  });
-
-  onDestroy(() => {
-    unsub();
-  })
-
 </script>
 
 <div class="p-10 h-full">
 
-  <a href="/" class="text-white">
-    Go Home
-  </a>
-
   <div class="text-white">
-    {JSON.stringify(_taskList)}
+    {JSON.stringify($taskListStore)}
   </div>
 
   <div class="text-white text-2xl mb-6">Some List</div>
