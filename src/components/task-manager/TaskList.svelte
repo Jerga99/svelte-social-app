@@ -1,14 +1,19 @@
 <script>
   import TaskItem from "./TaskItem.svelte";
   import { taskListStore } from "../../stores/tasks";
+  import { onDestroy } from "svelte";
 
   export let listName;
   export let tasks;
 
   let taskList;
 
-  taskListStore.subscribe((value) => {
+  const unsub = taskListStore.subscribe((value) => {
     taskList = value;
+  })
+
+  onDestroy(() => {
+    unsub();
   })
 
 </script>

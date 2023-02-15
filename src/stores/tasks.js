@@ -7,7 +7,7 @@ function createStore() {
 
   setInterval(() => {
     taskList.update((list) => [...list, i++])
-  }, 1000);
+  }, 2000);
 
   return taskList;
 }
