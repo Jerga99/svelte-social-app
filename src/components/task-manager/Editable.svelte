@@ -15,7 +15,9 @@
     <button 
       on:click={() => {
         isEditing = false;
-        dispatch("editCancel");
+        dispatch("editCancel", {
+          taskText: value
+        });
       }}
       class="flex underline">Close
     </button>
