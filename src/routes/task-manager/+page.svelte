@@ -8,12 +8,19 @@
     {id: "l-3", text: "List 3", items: [{id: "t-7", text: "Task 7"},{id: "t-8", text: "Task 8"},{id: "t-9", text: "Task 9"}]},
   ];
 
+  let _taskList;
+
+  taskListStore.subscribe((value) => {
+    console.log("Subscribe Called!");
+    _taskList = value;
+  });
+
 </script>
 
 <div class="p-10 h-full">
 
   <div class="text-white">
-    {JSON.stringify(taskListStore)}
+    {JSON.stringify(_taskList)}
   </div>
 
   <div class="text-white text-2xl mb-6">Some List</div>
