@@ -31,6 +31,20 @@ function createStore() {
           items: []
         }
       ])
+    },
+    addTask: (listIdx) => {
+      update((list) => {
+        const {items} = list[listIdx];
+
+        list[listIdx].items = [
+          ...items, {
+            id: new Date().toISOString(),
+            text: "What to do?"
+          }
+        ];
+
+        return list;
+      })
     }
   };
 }
