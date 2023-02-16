@@ -8,19 +8,10 @@
   let value = task.text;
 
   function updateTask(event) {
-    const taskIdx = $taskListStore[listIdx].items.findIndex(item => item.id === task.id);
-
-    if (taskIdx > -1) {
-
-      taskListStore.update(list => {
-        list[listIdx].items[taskIdx] = {
-          id: task.id,
-          text: event.detail.taskText
-        };
-
-        return list;
-      })
-    }
+    taskListStore.updateTask({
+      id: task.id,
+      text: event.detail.taskText
+    }, listIdx)
   }
 
 </script>

@@ -1,5 +1,5 @@
 
-import { writable } from "svelte/store";
+import { writable, get } from "svelte/store";
 
 const DEFAUL_DATA = [
   {id: "l-1", text: "List 1", items: [{id: "t-1", text: "Task 1"},{id: "t-2", text: "Task 2"},{id: "t-3", text: "Task 3"}]},
@@ -12,7 +12,29 @@ function createStore() {
   const {subscribe} = taskList;
 
   return {
-    subscribe
+    subscribe,
+    updateTask: (task, listIdx) => {
+      // const taskIdx = get(taskList)[listIdx].items.findIndex(item => item.id === task.id);
+
+      // if (taskIdx > -1) {
+      //   taskList.update(list => {
+      //     list[listIdx].items[taskIdx] = {...task};
+      //     return list;
+      //   })
+      // }
+
+      // -------
+
+      taskList.update(list => {
+        const taskIdx = list[listIdx].items.findIndex(item => item.id === task.id);
+
+        if (taskIdx > -1) {
+          list[listIdx].items[taskIdx] = {...task};  
+        }
+
+        return list;
+      })
+    }
   };
 }
 
