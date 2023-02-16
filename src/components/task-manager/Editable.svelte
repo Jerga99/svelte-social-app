@@ -21,7 +21,6 @@
       }}
       class="flex underline">Close
     </button>
-    <div>{value}</div>
   </div>
 {:else}
   <button on:click={() => isEditing = true}>
