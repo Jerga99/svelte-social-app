@@ -46,10 +46,12 @@ function createStore() {
         return list;
       })
     },
-    moveTask: (moveData, moveToListIdx) => {
-      console.log("Dropping to list idx: " + moveToListIdx);
-      console.log("Source list idx: " + moveData.listIdx);
-      console.log("Task item idx: " + moveData.taskIdx);
+    moveTask: (sourceData, moveToListIdx) => {
+      update(list => {
+        const [task] = list[sourceData.listIdx].items.splice(sourceData.taskIdx, 1);
+        list[moveToListIdx].items.push(task);
+        return list;
+      })
     }
   };
 }
