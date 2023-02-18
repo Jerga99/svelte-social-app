@@ -2,8 +2,7 @@
   import { taskListStore } from "../../stores/tasks";
   import TaskItem from "./TaskItem.svelte";
   
-  export let listName;
-  export let tasks;
+  export let list;
   export let listIdx;
 
   function drop(e) {
@@ -22,7 +21,7 @@
   >
     <div class="flex-it m-3">
       <div class="flex-it flex-row">
-        <div class="text-xl text-left font-bold mr-2">{listName}</div>
+        <div class="text-xl text-left font-bold mr-2">{list.text}</div>
         <div class="flex hover:text-red-600 items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +43,7 @@
       </div>
     </div>
     <div class="overflow-x-hidden overflow-y-auto with-scrollbar p-2">
-      {#each tasks as task, taskIdx (task.id)}
+      {#each list.items as task, taskIdx (task.id)}
         <TaskItem 
           {task} 
           {listIdx}
