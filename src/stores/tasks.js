@@ -45,6 +45,11 @@ function createStore() {
 
         return list;
       })
+    },
+    moveTask: (moveData, moveToListIdx) => {
+      console.log("Dropping to list idx: " + moveToListIdx);
+      console.log("Source list idx: " + moveData.listIdx);
+      console.log("Task item idx: " + moveData.taskIdx);
     }
   };
 }
