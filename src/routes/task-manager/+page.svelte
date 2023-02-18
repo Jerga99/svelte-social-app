@@ -3,7 +3,7 @@
   import { taskListStore } from "../../stores/tasks";
 </script>
 
-<div class="p-10 h-full">
+<div class="p-10 h-full flex-it">
   <div class="text-white text-2xl mb-6">Some List</div>
   <button 
     on:click={taskListStore.addList}
@@ -11,7 +11,7 @@
   >
     + Add List
   </button>
-  <div class="flex-it h-full">
+  <div class="flex-it h-full flex-1">
     <div class="flex-it flex-row rounded-xl h-full">
       {#each $taskListStore as list, listIdx (list.id)}
         <TaskList 
