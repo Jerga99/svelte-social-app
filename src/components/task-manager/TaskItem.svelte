@@ -14,9 +14,17 @@
     }, listIdx)
   }
 
+  function dragStart() {
+    console.log("Dragging item!");
+  }
+
 </script>
 
-<div class="flex-it border border-solid p-2 rounded-xl bg-slate-500 mb-2 cursor-pointer">
+<div 
+  draggable={true}
+  on:dragstart={dragStart}
+  class="flex-it border border-solid p-2 rounded-xl bg-slate-500 mb-2 cursor-pointer"
+>
   <div class="flex-it">
     <Editable bind:value on:editCancel={updateTask}>
       <div class="flex-it flex-row">
