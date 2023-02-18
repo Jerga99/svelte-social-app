@@ -9,6 +9,7 @@
 <script>
   import { taskListStore } from "../../stores/tasks";
   import TaskItem from "./TaskItem.svelte";
+  import { send, receive } from "../../transitions";
   
   export let list;
   export let listIdx;
@@ -57,11 +58,16 @@
     </div>
     <div class="overflow-x-hidden overflow-y-auto with-scrollbar p-2">
       {#each list.items as task, taskIdx (task.id)}
-        <TaskItem 
-          {task} 
-          {listIdx}
-          {taskIdx}
-        />
+        <div
+          in:receive={{key: task.id}}
+          out:send={{key: task.id}}
+        >
+          <TaskItem 
+            {task} 
+            {listIdx}
+            {taskIdx}
+          />
+        </div>
       {/each}
     </div>
     <button 
