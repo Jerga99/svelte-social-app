@@ -9,8 +9,9 @@
 <script>
   import { taskListStore } from "../../stores/tasks";
   import TaskItem from "./TaskItem.svelte";
+  import { flip } from "svelte/animate";
   import { send, receive } from "../../transitions";
-  
+
   export let list;
   export let listIdx;
 
@@ -61,6 +62,7 @@
         <div
           in:receive={{key: task.id}}
           out:send={{key: task.id}}
+          animate:flip
         >
           <TaskItem 
             {task} 
