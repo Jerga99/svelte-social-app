@@ -25,6 +25,10 @@
     listHoverId.set(null);
   }
 
+  function updateList(e) {
+    taskListStore.updateList(e.detail.value, listIdx);
+  }
+
 </script>
 
 <div class="flex-it h-full w-80 max-w-sm min-h-full m-2 my-0">
@@ -38,7 +42,7 @@
     class="bg-slate-400 flex-it rounded-xl max-h-full border-2 border-gray-500"
   >
     <div class="flex-it m-3">
-      <Editable bind:value>
+      <Editable bind:value on:editCancel={updateList}>
         <div class="flex-it flex-row">
           <div class="text-xl text-left font-bold mr-2">{list.text}</div>
           <button on:click|stopPropagation={() => {

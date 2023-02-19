@@ -11,7 +11,7 @@
   function updateTask(event) {
     taskListStore.updateTask({
       id: task.id,
-      text: event.detail.taskText
+      text: event.detail.value
     }, listIdx)
   }
 
