@@ -56,8 +56,14 @@ function createStore() {
         return list;
       })
     },
-    removeTask: () => {
-      alert("Removing task!");
+    removeTask: (listIdx, taskIdx) => {
+      update((list) => {
+        // list[listIdx].items.splice(taskIdx, 1);
+
+        list[listIdx].items = list[listIdx].items.filter((_, id) => id !== taskIdx);
+
+        return list;
+      })
     }
   };
 }
