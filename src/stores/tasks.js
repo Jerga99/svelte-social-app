@@ -60,3 +60,10 @@ function createStore() {
 }
 
 export const taskListStore = createStore();
+
+
+taskListStore.subscribe((list) => {
+  if (list) {
+    localStorage.setItem("task-manager-store", JSON.stringify(list));
+  }
+})
