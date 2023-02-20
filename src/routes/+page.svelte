@@ -1,16 +1,15 @@
 <script>
-  import TiHomeOutline from "svelte-icons/ti/TiHomeOutline.svelte"
-  import TiGroupOutline from "svelte-icons/ti/TiGroupOutline.svelte"
-  import TiCogOutline from "svelte-icons/ti/TiCogOutline.svelte"
-  import TiBell from "svelte-icons/ti/TiBell.svelte"
-  import TiZoomOutline from "svelte-icons/ti/TiZoomOutline.svelte"
-  import TiSocialFlickr from "svelte-icons/ti/TiSocialFlickr.svelte"
-  import TiTrash from "svelte-icons/ti/TiTrash.svelte"
-  import TiMessage from "svelte-icons/ti/TiMessage.svelte"
-  import TiHeartOutline from "svelte-icons/ti/TiHeartOutline.svelte"
-  import TiImageOutline from "svelte-icons/ti/TiImageOutline.svelte"
+  import TiHomeOutline from "svelte-icons/ti/TiHomeOutline.svelte";
+  import TiGroupOutline from "svelte-icons/ti/TiGroupOutline.svelte";
+  import TiCogOutline from "svelte-icons/ti/TiCogOutline.svelte";
+  import TiBell from "svelte-icons/ti/TiBell.svelte";
+  import TiZoomOutline from "svelte-icons/ti/TiZoomOutline.svelte";
+  import TiSocialFlickr from "svelte-icons/ti/TiSocialFlickr.svelte";
+  import TiTrash from "svelte-icons/ti/TiTrash.svelte";
+  import TiMessage from "svelte-icons/ti/TiMessage.svelte";
+  import TiHeartOutline from "svelte-icons/ti/TiHeartOutline.svelte";
+  import TiImageOutline from "svelte-icons/ti/TiImageOutline.svelte";
 </script>
-
 
 <div class="w-full h-full bg-gray-900 text-gray-100">
   <div class="flex h-full min-h-252">
@@ -20,7 +19,9 @@
         <div class="h-full fixed flex-it top-0">
           <div class="flex-it h-full xl:w-80 w-20 overflow-y-auto px-3 justify-between">
             <div class="flex-it items-start">
-              <div class="p-3 pt-4 xl:pb-3 pb-0 xl:text-2xl text-sm font-bold transition duration-200 hover:opacity-80">
+              <div
+                class="p-3 pt-4 xl:pb-3 pb-0 xl:text-2xl text-sm font-bold transition duration-200 hover:opacity-80"
+              >
                 <a href="/">
                   <h1>Glider</h1>
                 </a>
@@ -28,7 +29,9 @@
               <div class="my-1 w-full flex-it">
                 <nav class="flex-it items-start">
                   <a class="flex-it items-start flex-grow w-full" href="/">
-                    <div class="p-3 flex-row justify-center items-center flex-it rounded-3xl hover:bg-gray-800 hover:rounded-3xl transition duration-200">
+                    <div
+                      class="p-3 flex-row justify-center items-center flex-it rounded-3xl hover:bg-gray-800 hover:rounded-3xl transition duration-200"
+                    >
                       <div class="flex-it">
                         <div class="icon">
                           <TiHomeOutline />
@@ -40,7 +43,9 @@
                     </div>
                   </a>
                   <a class="flex-it items-start flex-grow w-full" href="/">
-                    <div class="p-3 flex-row justify-center items-center flex-it rounded-3xl hover:bg-gray-800 hover:rounded-3xl transition duration-200">
+                    <div
+                      class="p-3 flex-row justify-center items-center flex-it rounded-3xl hover:bg-gray-800 hover:rounded-3xl transition duration-200"
+                    >
                       <div class="flex-it">
                         <div class="icon">
                           <TiGroupOutline />
@@ -52,7 +57,9 @@
                     </div>
                   </a>
                   <a class="flex-it items-start flex-grow w-full" href="/">
-                    <div class="p-3 flex-row justify-center items-center flex-it rounded-3xl hover:bg-gray-800 hover:rounded-3xl transition duration-200">
+                    <div
+                      class="p-3 flex-row justify-center items-center flex-it rounded-3xl hover:bg-gray-800 hover:rounded-3xl transition duration-200"
+                    >
                       <div class="flex-it">
                         <div class="icon">
                           <TiCogOutline />
@@ -64,7 +71,9 @@
                     </div>
                   </a>
                   <a class="flex-it items-start flex-grow w-full" href="/">
-                    <div class="p-3 flex-row justify-center items-center flex-it rounded-3xl hover:bg-gray-800 hover:rounded-3xl transition duration-200">
+                    <div
+                      class="p-3 flex-row justify-center items-center flex-it rounded-3xl hover:bg-gray-800 hover:rounded-3xl transition duration-200"
+                    >
                       <div class="flex-it">
                         <div class="icon">
                           <TiBell />
@@ -76,7 +85,9 @@
                     </div>
                   </a>
                   <a class="flex-it items-start flex-grow w-full" href="/">
-                    <div class="p-3 flex-row justify-center items-center flex-it rounded-3xl hover:bg-gray-800 hover:rounded-3xl transition duration-200">
+                    <div
+                      class="p-3 flex-row justify-center items-center flex-it rounded-3xl hover:bg-gray-800 hover:rounded-3xl transition duration-200"
+                    >
                       <div class="flex-it">
                         <div class="icon">
                           <TiZoomOutline />
@@ -91,8 +102,12 @@
               </div>
               <!-- GLIDER SEND-MESSAGE BUTTON -->
               <div class="my-1 flex-it w-10/12 cursor-pointer">
-                <div class="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-full flex-it transition">
-                  <div class="flex-it flex-row text-xl font-bold text-white items-start justify-center truncate duration-200">
+                <div
+                  class="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-full flex-it transition"
+                >
+                  <div
+                    class="flex-it flex-row text-xl font-bold text-white items-start justify-center truncate duration-200"
+                  >
                     <div>Glide It</div>
                   </div>
                 </div>
@@ -100,7 +115,9 @@
             </div>
             <!-- PROFILE MENU -->
             <div class="flex-it my-3 hover:cursor-pointer">
-              <div class="flex-it items-center flex-row p-3 rounded-3xl hover:bg-gray-800 hover:rounded-3xl transition duration-200 cursor-pointer">
+              <div
+                class="flex-it items-center flex-row p-3 rounded-3xl hover:bg-gray-800 hover:rounded-3xl transition duration-200 cursor-pointer"
+              >
                 <div class="flex-it">
                   <div class="w-10 h-10 overflow-visible">
                     <img
@@ -132,14 +149,18 @@
           <div class="flex-it flex-row justify-between min-h-full">
             <div class="flex-it md:max-w-152 w-full border-x-1 border-solid border-gray-700">
               <div class="sticky z-10 flex-it top-0">
-                <div class="flex-it h-14 p-4 xl:text-xl text-sm font-bold z-10 backdrop-blur-md bg-opacity-70">
+                <div
+                  class="flex-it h-14 p-4 xl:text-xl text-sm font-bold z-10 backdrop-blur-md bg-opacity-70"
+                >
                   Home
                 </div>
               </div>
-               <!-- HOME PAGE START -->
-               <div class="flex-it py-1 px-4 flex-row">
+              <!-- HOME PAGE START -->
+              <div class="flex-it py-1 px-4 flex-row">
                 <div class="flex-it mr-4">
-                  <div class="w-12 h-12 overflow-visible cursor-pointer transition duration-200 hover:opacity-80">
+                  <div
+                    class="w-12 h-12 overflow-visible cursor-pointer transition duration-200 hover:opacity-80"
+                  >
                     <img
                       alt=""
                       class="rounded-full"
@@ -159,7 +180,9 @@
                     />
                   </div>
                   <div class="flex-it mb-1 flex-row xs:justify-between items-center">
-                    <div class="flex-it mt-3 mr-3 cursor-pointer text-white hover:text-blue-400 transition">
+                    <div
+                      class="flex-it mt-3 mr-3 cursor-pointer text-white hover:text-blue-400 transition"
+                    >
                       <div class="upload-btn-wrapper">
                         <div class="icon">
                           <TiImageOutline />
@@ -174,7 +197,9 @@
                         disabled:cursor-not-allowed disabled:bg-gray-400
                         bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-full flex-it transition duration-200"
                       >
-                        <div class="flex-it flex-row text-sm font-bold text-white items-start justify-center">
+                        <div
+                          class="flex-it flex-row text-sm font-bold text-white items-start justify-center"
+                        >
                           <span>Glide It</span>
                         </div>
                       </button>
@@ -188,7 +213,9 @@
               <div class="flex-it p-4 border-b-1 border-solid border-gray-700">
                 <div class="flex-it flex-row">
                   <div class="flex-it mr-4">
-                    <div class="w-12 h-12 overflow-visible cursor-pointer transition duration-200 hover:opacity-80">
+                    <div
+                      class="w-12 h-12 overflow-visible cursor-pointer transition duration-200 hover:opacity-80"
+                    >
                       <img
                         alt=""
                         class="rounded-full"
@@ -212,18 +239,20 @@
                       </div>
                     </div>
                     <div class="flex-it flex-row flex-grow-0 items-center mb-2">
-                      <div class="flex-it mr-3 mb-3 w-full">
-                        My First Post
-                      </div>
+                      <div class="flex-it mr-3 mb-3 w-full">My First Post</div>
                     </div>
                     <div class="flex-it flex-row flex-grow text-gray-400">
-                      <div class="flex-it flex-row items-center cursor-pointer mr-5 transition hover:text-blue-400">
+                      <div
+                        class="flex-it flex-row items-center cursor-pointer mr-5 transition hover:text-blue-400"
+                      >
                         <div class="icon">
                           <TiMessage />
                         </div>
                         <span class="text-xs ml-3">321</span>
                       </div>
-                      <div class="flex-it flex-row items-center cursor-pointer transition hover:text-pink-400">
+                      <div
+                        class="flex-it flex-row items-center cursor-pointer transition hover:text-pink-400"
+                      >
                         <div class="icon">
                           <TiHeartOutline />
                         </div>
@@ -244,54 +273,42 @@
                 </div>
                 <div class="flex-it p-4 cursor-pointer transition duration-200 hover:bg-gray-700">
                   <div class="flex-it">
-                    <span class="text-gray-400 text-sm">
-                      Trends in Europe
-                    </span>
+                    <span class="text-gray-400 text-sm"> Trends in Europe </span>
                     <span class="text-lg font-bold">Sports</span>
                     <span class="text-gray-400 text-sm">10 000 glides</span>
                   </div>
                 </div>
                 <div class="flex-it p-4 cursor-pointer transition duration-200 hover:bg-gray-700">
                   <div class="flex-it">
-                    <span class="text-gray-400 text-sm">
-                      Trends in Europe
-                    </span>
+                    <span class="text-gray-400 text-sm"> Trends in Europe </span>
                     <span class="text-lg font-bold">Sports</span>
                     <span class="text-gray-400 text-sm">10 000 glides</span>
                   </div>
                 </div>
                 <div class="flex-it p-4 cursor-pointer transition duration-200 hover:bg-gray-700">
                   <div class="flex-it">
-                    <span class="text-gray-400 text-sm">
-                      Trends in Europe
-                    </span>
+                    <span class="text-gray-400 text-sm"> Trends in Europe </span>
                     <span class="text-lg font-bold">Sports</span>
                     <span class="text-gray-400 text-sm">10 000 glides</span>
                   </div>
                 </div>
                 <div class="flex-it p-4 cursor-pointer transition duration-200 hover:bg-gray-700">
                   <div class="flex-it">
-                    <span class="text-gray-400 text-sm">
-                      Trends in Europe
-                    </span>
+                    <span class="text-gray-400 text-sm"> Trends in Europe </span>
                     <span class="text-lg font-bold">Sports</span>
                     <span class="text-gray-400 text-sm">10 000 glides</span>
                   </div>
                 </div>
                 <div class="flex-it p-4 cursor-pointer transition duration-200 hover:bg-gray-700">
                   <div class="flex-it">
-                    <span class="text-gray-400 text-sm">
-                      Trends in Europe
-                    </span>
+                    <span class="text-gray-400 text-sm"> Trends in Europe </span>
                     <span class="text-lg font-bold">Sports</span>
                     <span class="text-gray-400 text-sm">10 000 glides</span>
                   </div>
                 </div>
                 <div class="flex-it p-4 cursor-pointer transition duration-200 hover:bg-gray-700">
                   <div class="flex-it">
-                    <span class="text-gray-400 text-sm">
-                      Trends in Europe
-                    </span>
+                    <span class="text-gray-400 text-sm"> Trends in Europe </span>
                     <span class="text-lg font-bold">Sports</span>
                     <span class="text-gray-400 text-sm">10 000 glides</span>
                   </div>
