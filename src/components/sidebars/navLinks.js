@@ -12,7 +12,7 @@ export const navLinks = [
   },
   {
     name: "Profile",
-    href: "/",
+    href: "/profile",
     icon: TiGroupOutline
   },
   {
