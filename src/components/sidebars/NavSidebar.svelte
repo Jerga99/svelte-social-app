@@ -5,6 +5,11 @@
   import TiBell from "svelte-icons/ti/TiBell.svelte";
   import TiZoomOutline from "svelte-icons/ti/TiZoomOutline.svelte";
   import TiSocialFlickr from "svelte-icons/ti/TiSocialFlickr.svelte";
+
+  import { navLinks } from "./navLinks";
+
+  console.log(navLinks);
+
 </script>
 
 <header class="lg:flex-grow flex-it items-end">
