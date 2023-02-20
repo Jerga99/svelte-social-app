@@ -1,10 +1,12 @@
 
-export const ssr = false;
+export const prerender = true;
 
 export function load() {
-  console.log("Calling Load!");
+  const randomNum = Math.floor(Math.random() * 10);
+  console.log("Calling Load: " + randomNum);
+
   return {
     test1: "Hello World",
-    test2: 100
+    test2: randomNum
   }
 }
