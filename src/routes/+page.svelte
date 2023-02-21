@@ -3,9 +3,23 @@
   import TiMessage from "svelte-icons/ti/TiMessage.svelte";
   import TiHeartOutline from "svelte-icons/ti/TiHeartOutline.svelte";
   import TiImageOutline from "svelte-icons/ti/TiImageOutline.svelte";
+
+  let glides = [];
+  let glideContent = "";
+
+  function createGlide() {
+    const glide = {
+      content: glideContent
+    };
+
+    glides = [glide, ...glides];
+    glideContent = "";
+  }
+
 </script>
 
 <!-- HOME PAGE START -->
+{JSON.stringify(glides)}
 <div class="flex-it py-1 px-4 flex-row">
   <div class="flex-it mr-4">
     <div
@@ -22,6 +36,7 @@
   <div class="flex-it flex-grow">
     <div class="flex-it">
       <textarea
+        bind:value={glideContent}
         name="content"
         rows="1"
         id="glide"
@@ -42,6 +57,7 @@
       </div>
       <div class="flex-it w-32 mt-3 cursor-pointer">
         <button
+          on:click={createGlide}
           type="button"
           class="
           disabled:cursor-not-allowed disabled:bg-gray-400

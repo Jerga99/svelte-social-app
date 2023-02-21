@@ -1,5 +1,4 @@
 <script>
-  console.log("Calling Page!");
   import TaskList from "../../components/task-manager/TaskList.svelte";
   import { taskListStore } from "../../stores/tasks";
 

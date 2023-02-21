@@ -1,14 +1,6 @@
 <script>
-  import TiHomeOutline from "svelte-icons/ti/TiHomeOutline.svelte";
-  import TiGroupOutline from "svelte-icons/ti/TiGroupOutline.svelte";
-  import TiCogOutline from "svelte-icons/ti/TiCogOutline.svelte";
-  import TiBell from "svelte-icons/ti/TiBell.svelte";
-  import TiZoomOutline from "svelte-icons/ti/TiZoomOutline.svelte";
   import TiSocialFlickr from "svelte-icons/ti/TiSocialFlickr.svelte";
-
   import { navLinks } from "./navLinks";
-
-  console.log(navLinks);
 
 </script>
 
