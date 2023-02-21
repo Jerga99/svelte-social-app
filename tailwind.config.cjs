@@ -28,5 +28,8 @@ module.exports = {
         "1": "1px"
       }
     }
-  }
+  },
+  plugins: [
+    require('@tailwindcss/forms')
+  ]
 };
