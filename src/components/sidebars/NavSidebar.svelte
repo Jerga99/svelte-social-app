@@ -1,4 +1,5 @@
 <script>
+  import Popup from "@components/utils/Popup.svelte";
   import TiSocialFlickr from "svelte-icons/ti/TiSocialFlickr.svelte";
   import { navLinks } from "./navLinks";
 
@@ -51,6 +52,7 @@
         </div>
         <!-- PROFILE MENU -->
         <div class="flex-it my-3 hover:cursor-pointer">
+          <Popup />
           <div
             class="flex-it items-center flex-row p-3 rounded-3xl hover:bg-gray-800 hover:rounded-3xl transition duration-200 cursor-pointer"
           >
