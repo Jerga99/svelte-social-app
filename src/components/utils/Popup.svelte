@@ -1,11 +1,20 @@
 
 <script>
-  import { beforeUpdate, afterUpdate, onMount } from "svelte";
+  import { beforeUpdate, afterUpdate, onMount, onDestroy } from "svelte";
 
   let isOpen = false;
 
   onMount(() => {
     addEventListener("click", closePopup);
+
+    return () => {
+      console.log("destroy from onMount called!");
+      removeEventListener("click", closePopup);
+    }
+  })
+
+  onDestroy(() => {
+    console.log("destroy from onDestroy called!");
   })
 
   beforeUpdate(() => {
@@ -17,6 +26,7 @@
   })
 
   function closePopup() {
+    console.log("CALLLED!");
     if (isOpen) isOpen = false;
   }
 
