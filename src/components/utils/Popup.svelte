@@ -4,8 +4,11 @@
 </script>
 
 <div class="relative">
-  <button on:click={() => isOpen = true}>Open Me
-  </button>
+  <div class="flex-it">
+    <button on:click={() => isOpen = true}>
+      <slot />
+    </button>
+  </div>
   {#if isOpen}
     <div class="flex-it w-20 h-20 fixed bg-black bottom-10 popup">
       Hello World

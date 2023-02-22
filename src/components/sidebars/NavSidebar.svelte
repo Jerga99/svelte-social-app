@@ -52,29 +52,28 @@
         </div>
         <!-- PROFILE MENU -->
         <div class="flex-it my-3 hover:cursor-pointer">
-          <Popup />
-          <div
-            class="flex-it items-center flex-row p-3 rounded-3xl hover:bg-gray-800 hover:rounded-3xl transition duration-200 cursor-pointer"
-          >
-            <div class="flex-it">
-              <div class="w-10 h-10 overflow-visible">
-                <img
-                  alt=""
-                  class="rounded-full"
-                  src="https://www.pinclipart.com/picdir/middle/133-1331433_free-user-avatar-icons-happy-flat-design-png.png"
-                />
-              </div>
-            </div>
-            <div class="flex-it xl:flex hidden flex-grow flex-row justify-between items-center">
-              <div class="flex-it mx-3 font-bold">Filip99</div>
+          <Popup>
+            <div class="flex-it items-center flex-row p-3 rounded-3xl hover:bg-gray-800 hover:rounded-3xl transition duration-200 cursor-pointer">
               <div class="flex-it">
-                <div class="icon">
-                  <TiSocialFlickr />
+                <div class="w-10 h-10 overflow-visible">
+                  <img
+                    alt=""
+                    class="rounded-full"
+                    src="https://www.pinclipart.com/picdir/middle/133-1331433_free-user-avatar-icons-happy-flat-design-png.png"
+                  />
                 </div>
-                <!-- <FiMoreHorizontal /> -->
+              </div>
+              <div class="flex-it xl:flex hidden flex-grow flex-row justify-between items-center">
+                <div class="flex-it mx-3 font-bold">Filip99</div>
+                <div class="flex-it">
+                  <div class="icon">
+                    <TiSocialFlickr />
+                  </div>
+                  <!-- <FiMoreHorizontal /> -->
+                </div>
               </div>
             </div>
-          </div>
+          </Popup>
         </div>
       </div>
     </div>
