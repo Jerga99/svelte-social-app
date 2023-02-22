@@ -11,9 +11,11 @@
 
   onMount(() => {
     addEventListener("click", closePopup);
+    addEventListener("resize", adjustPopup);
     
     return () => {
       removeEventListener("click", closePopup);
+      removeEventListener("resize", adjustPopup);
     }
   })
 
