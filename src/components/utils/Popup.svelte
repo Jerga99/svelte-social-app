@@ -5,7 +5,7 @@
   let isOpen = false;
 
   onMount(() => {
-    console.log("Mount has been called!");
+    addEventListener("click", closePopup);
   })
 
   beforeUpdate(() => {
@@ -16,11 +16,17 @@
     console.log("after update called!");
   })
 
+  function closePopup() {
+    if (isOpen) isOpen = false;
+  }
+
 </script>
 
 <div class="flex-it">
   <div class="flex-it">
-    <button on:click={() => isOpen = true}>
+    <button on:click|stopPropagation={() => {
+      isOpen = true;
+    }}>
       <slot />
     </button>
   </div>
