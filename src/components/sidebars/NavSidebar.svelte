@@ -51,7 +51,7 @@
           </div>
         </div>
         <!-- PROFILE MENU -->
-        <div class="flex-it my-3 hover:cursor-pointer">
+        <div class="flex-it hover:cursor-pointer">
           <Popup>
             <div class="flex-it items-center flex-row p-3 rounded-3xl hover:bg-gray-800 hover:rounded-3xl transition duration-200 cursor-pointer">
               <div class="flex-it">
