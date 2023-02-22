@@ -1,6 +1,21 @@
 
 <script>
+  import { beforeUpdate, afterUpdate, onMount } from "svelte";
+
   let isOpen = false;
+
+  onMount(() => {
+    console.log("Mount has been called!");
+  })
+
+  beforeUpdate(() => {
+    console.log("before update called!");
+  })
+
+  afterUpdate(() => {
+    console.log("after update called!");
+  })
+
 </script>
 
 <div class="flex-it">
