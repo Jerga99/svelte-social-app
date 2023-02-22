@@ -1,11 +1,13 @@
 
 <script>
-  import { beforeUpdate, afterUpdate, onMount, onDestroy } from "svelte";
+  import { afterUpdate, onMount } from "svelte";
   import Portal from "./Portal.svelte";
 
   let isOpen = false;
   let openerMenu;
+
   let popupBottomPosition;
+  let popupLeftPosition;
 
   onMount(() => {
     addEventListener("click", closePopup);
@@ -16,8 +18,17 @@
   })
 
   afterUpdate(() => {
-    popupBottomPosition = openerMenu.clientHeight + "px";
+    adjustPopup();
   })
+
+  function adjustPopup() {
+    if (isOpen) {
+      const position = openerMenu.getBoundingClientRect();
+
+      popupBottomPosition = openerMenu.clientHeight + "px";
+      popupLeftPosition = position.left + "px";
+    }
+  }
 
   function closePopup() {
     console.log("CALLLED!");
@@ -37,7 +48,7 @@
   {#if isOpen}
     <Portal>
       <div 
-        style="bottom: {popupBottomPosition}"
+        style="bottom: {popupBottomPosition}; left: {popupLeftPosition}"
         class="flex-it hover:cursor-pointer fixed bg-gray-800 text-white popup z-10 rounded-2xl border-gray-700 border transition duration-1000"
       >
         <div class="w-72 min-w-68 max-h-120 min-h-8 flex-it overflow-auto">
