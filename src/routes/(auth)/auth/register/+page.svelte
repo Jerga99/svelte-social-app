@@ -1,5 +1,5 @@
 <script>
-  import AuthLayout from "../../../../components/layouts/AuthLayout.svelte";
+  import AuthLayout from "@components/layouts/AuthLayout.svelte";
 </script>
 
 <AuthLayout title="Create Account">
