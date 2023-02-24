@@ -1,13 +1,18 @@
 
 <script>
-  import { setContext } from "svelte";
+  import { setContext, onMount } from "svelte";
   import { writable } from "svelte/store";
   import { key } from ".";
 
   let isXl = writable(false);
   let isLg = writable(false);
+  let loading = writable(true);
 
   let innerWidth;
+
+  onMount(() => {
+    $loading = false;
+  })
 
   $: {
     $isXl = innerWidth > 1280;
@@ -16,7 +21,8 @@
 
   setContext(key, {
     isXl,
-    isLg
+    isLg,
+    loading
   });
 
 </script>
