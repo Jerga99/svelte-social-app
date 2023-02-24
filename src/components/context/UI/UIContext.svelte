@@ -6,13 +6,8 @@
 
   let isXl = writable(false);
   let isLg = writable(false);
-  let loading = writable(true);
-
+  
   let innerWidth;
-
-  onMount(() => {
-    $loading = false;
-  })
 
   $: {
     $isXl = innerWidth > 1280;
@@ -21,8 +16,7 @@
 
   setContext(key, {
     isXl,
-    isLg,
-    loading
+    isLg
   });
 
 </script>

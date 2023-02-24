@@ -5,7 +5,7 @@
   import TiBrush from "svelte-icons/ti/TiBrush.svelte";
   import { navLinks } from "./navLinks";
 
-  const { isXl, loading } = getUIContext();
+  const { isXl } = getUIContext();
 
 </script>
 
@@ -49,9 +49,7 @@
               <div
                 class="flex-it flex-row text-xl font-bold text-white items-start justify-center truncate duration-200"
               >
-                {#if $loading}
-                  <div>...</div>
-                {:else if $isXl}
+                {#if $isXl}
                   <div>Glide It</div>
                 {:else}
                   <div class="icon"><TiBrush /></div>
