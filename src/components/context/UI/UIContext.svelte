@@ -1,7 +1,7 @@
 
 <script>
   import { onMount, setContext } from "svelte";
-  import { key } from "./key";
+  import { key } from ".";
 
   let color = "blue";
 
