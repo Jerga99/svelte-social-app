@@ -8,14 +8,13 @@
   let isXl = writable(false);
   let isLg = writable(false);
 
-  onMount(() => {
-    handleResize();
-    addEventListener("resize", handleResize);
+  let innerHeight;
+  let innerWidth;
 
-    return () => {
-      removeEventListener("resize", handleResize);
-    }
-  })
+  $: {
+    console.log(innerWidth);
+    console.log(innerHeight);
+  }
 
   function handleResize() {
     $documentBody = getSize();
@@ -38,4 +37,8 @@
 
 </script>
 
+<svelte:window 
+  bind:innerWidth
+  bind:innerHeight
+/>
 <slot />
