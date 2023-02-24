@@ -2,6 +2,7 @@
 <script>
   import { afterUpdate, onMount } from "svelte";
   import Portal from "./Portal.svelte";
+  import { clickOutside } from "@components/actions/clickOutside";
 
   let isOpen = false;
 
@@ -55,6 +56,7 @@
   {#if isOpen}
     <Portal>
       <div 
+        use:clickOutside
         bind:this={popup}
         style="bottom: {popupBottomPosition}; left: {popupLeftPosition}"
         class="flex-it hover:cursor-pointer fixed bg-gray-800 text-white popup z-10 rounded-2xl border-gray-700 border transition duration-1000"
