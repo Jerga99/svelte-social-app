@@ -1,5 +1,6 @@
 
 <script>
+  import Loader from "@components/utils/Loader.svelte";
   import { setContext } from "svelte";
   import { writable } from "svelte/store";
   import { key } from ".";
@@ -19,4 +20,7 @@
 </script>
 
 
-<slot />
+<!-- <slot /> -->
+
+<!-- isLoading true -->
+<Loader size={150} />
