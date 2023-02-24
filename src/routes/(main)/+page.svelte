@@ -1,9 +1,16 @@
 <script>
+  import { key } from "@components/context/UI/key";
+  import { getContext } from "svelte";
   import TiImageOutline from "svelte-icons/ti/TiImageOutline.svelte";
   import GlidePost from "../../components/glides/GlidePost.svelte";
 
   let glides = [];
   let glideContent = "";
+
+  const { color, getMessage } = getContext(key);
+
+  getMessage();
+  console.log(color);
 
   function createGlide() {
     const date = new Date();

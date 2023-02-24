@@ -2,7 +2,6 @@
   import Popup from "@components/utils/Popup.svelte";
   import TiSocialFlickr from "svelte-icons/ti/TiSocialFlickr.svelte";
   import { navLinks } from "./navLinks";
-
 </script>
 
 <header class="lg:flex-grow flex-it items-end">
