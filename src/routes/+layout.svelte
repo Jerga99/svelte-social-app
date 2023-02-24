@@ -1,5 +1,8 @@
 <script>
+  import UiContext from "@components/context/UI/UIContext.svelte";
   import "../app.css";
 </script>
 
-<slot />
+<UiContext>
+  <slot />
+</UiContext>
