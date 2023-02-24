@@ -13,11 +13,9 @@
   let popupLeftPosition;
 
   onMount(() => {
-    addEventListener("click", closePopup);
     addEventListener("resize", adjustPopup);
     
     return () => {
-      removeEventListener("click", closePopup);
       removeEventListener("resize", adjustPopup);
     }
   })
@@ -35,14 +33,6 @@
     }
   }
 
-  function closePopup(e) {
-    if (isOpen && !isPopupClicked(e.target)) isOpen = false;
-  }
-
-  function isPopupClicked(targetElement) {
-    return popup.contains(targetElement);
-  }
-
 </script>
 
 <div class="flex-it">
@@ -56,6 +46,9 @@
   {#if isOpen}
     <Portal>
       <div 
+        on:outclick={() => {
+          isOpen = false;
+        }}
         use:clickOutside
         bind:this={popup}
         style="bottom: {popupBottomPosition}; left: {popupLeftPosition}"
