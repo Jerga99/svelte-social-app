@@ -1,20 +1,33 @@
 
 <script>
   import { onMount, setContext } from "svelte";
+  import { writable } from "svelte/store";
   import { key } from ".";
 
-  let color = "blue";
+  let documentBody = writable({});
 
   onMount(() => {
-    console.log("Context was mounted!");
+    handleResize();
+    addEventListener("resize", handleResize);
+
+    return () => {
+      removeEventListener("resize", handleResize);
+    }
   })
 
+  function handleResize() {
+    $documentBody = getSize();
+  }
+
+  function getSize() {
+    return {
+      height: document.body.clientHeight,
+      width: document.body.clientWidth
+    };
+  }
+
   setContext(key, {
-    getMessage: () => {
-      console.log("Hi there!");
-      return "Hello World!";
-    },
-    color
+    documentBody
   });
 
 </script>

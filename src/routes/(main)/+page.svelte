@@ -6,10 +6,7 @@
   let glides = [];
   let glideContent = "";
 
-  const { color, getMessage } = getUIContext();
-
-  getMessage();
-  console.log(color);
+  const { documentBody } = getUIContext();
 
   function createGlide() {
     const date = new Date();
@@ -86,6 +83,7 @@
   </div>
   <!-- MESSENGER END -->
 </div>
+{JSON.stringify($documentBody)}
 <div class="h-px bg-gray-700 my-1" />
 {#each glides as glide (glide.id)}
   <GlidePost {glide} />
