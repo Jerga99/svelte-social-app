@@ -19,8 +19,14 @@
 
 </script>
 
+<!-- Just to subscribe so start function can be called -->
+<div style="display:none;">
+  {$isAuthenticated}
+</div>
 
-<!-- <slot /> -->
+{#if $isLoading}
+  <Loader size={150} />
+{:else}
+  <slot />
+{/if}
 
-<!-- isLoading true -->
-<Loader size={150} />

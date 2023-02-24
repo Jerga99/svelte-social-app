@@ -1,12 +1,9 @@
 <script>
-  import { getAuthContext } from "@components/context/auth";
   import TiImageOutline from "svelte-icons/ti/TiImageOutline.svelte";
   import GlidePost from "../../components/glides/GlidePost.svelte";
 
   let glides = [];
   let glideContent = "";
-
-  const { isAuthenticated, isLoading } = getAuthContext();
 
   function createGlide() {
     const date = new Date();
@@ -83,8 +80,7 @@
   </div>
   <!-- MESSENGER END -->
 </div>
-Is Auth: {$isAuthenticated}
-Is Loading: {$isLoading}
+
 <div class="h-px bg-gray-700 my-1" />
 {#each glides as glide (glide.id)}
   <GlidePost {glide} />
