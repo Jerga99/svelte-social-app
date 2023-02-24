@@ -1,7 +1,12 @@
 <script>
+  import { getUIContext } from "@components/context/UI";
   import Popup from "@components/utils/Popup.svelte";
   import TiSocialFlickr from "svelte-icons/ti/TiSocialFlickr.svelte";
+  import TiBrush from "svelte-icons/ti/TiBrush.svelte";
   import { navLinks } from "./navLinks";
+
+  const { isXl } = getUIContext();
+
 </script>
 
 <header class="lg:flex-grow flex-it items-end">
@@ -44,7 +49,11 @@
               <div
                 class="flex-it flex-row text-xl font-bold text-white items-start justify-center truncate duration-200"
               >
-                <div>Glide It</div>
+                {#if $isXl}
+                  <div>Glide It</div>
+                {:else}
+                  <div class="icon"><TiBrush /></div>
+                {/if}
               </div>
             </div>
           </div>
