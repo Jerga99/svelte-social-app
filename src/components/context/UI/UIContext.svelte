@@ -5,6 +5,8 @@
   import { key } from ".";
 
   let documentBody = writable({});
+  let isXl = writable(false);
+  let isLg = writable(false);
 
   onMount(() => {
     handleResize();
@@ -17,6 +19,8 @@
 
   function handleResize() {
     $documentBody = getSize();
+    $isXl = $documentBody.width > 1280;
+    $isLg = $documentBody.width > 1024;
   }
 
   function getSize() {
@@ -27,7 +31,9 @@
   }
 
   setContext(key, {
-    documentBody
+    documentBody,
+    isXl,
+    isLg
   });
 
 </script>
