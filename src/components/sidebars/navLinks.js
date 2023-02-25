@@ -22,7 +22,7 @@ export const navLinks = [
   },
   {
     name: "Notifications",
-    href: "/",
+    href: "/auth/login",
     icon: TiBell
   },
   {
