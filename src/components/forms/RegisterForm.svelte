@@ -1,5 +1,7 @@
 
 <script>
+  import { validate } from "@components/actions/validate";
+
   let registerFormData = {
     fullName: "",
     nickName: "",
@@ -24,6 +26,7 @@
           <label for="fullName" class="block text-sm font-medium text-gray-700"> Full Name </label>
           <input
             bind:value={registerFormData.fullName}
+            use:validate={[1]}
             type="text"
             name="fullName"
             id="fullName"
@@ -38,6 +41,7 @@
           <label for="nickName" class="block text-sm font-medium text-gray-700"> Nick Name </label>
           <input
             bind:value={registerFormData.nickName}
+            use:validate={[2]}
             type="text"
             name="nickName"
             id="nickName"
@@ -49,6 +53,7 @@
           <label for="email" class="block text-sm font-medium text-gray-700"> Email </label>
           <input
             bind:value={registerFormData.email}
+            use:validate={[3]}
             type="text"
             name="email"
             id="email"
@@ -60,6 +65,7 @@
           <label for="avatar" class="block text-sm font-medium text-gray-700"> Avatar </label>
           <input
             bind:value={registerFormData.avatar}
+            use:validate={[4]}
             type="text"
             name="avatar"
             id="avatar"
@@ -71,6 +77,7 @@
           <label for="password" class="block text-sm font-medium text-gray-700"> Password </label>
           <input
             bind:value={registerFormData.password}
+            use:validate={[5]}
             type="password"
             name="password"
             id="password"
@@ -84,6 +91,7 @@
           </label>
           <input
             bind:value={registerFormData.passwordConfirmation}
+            use:validate={[6]}
             type="password"
             name="passwordConfirmation"
             id="passwordConfirmation"
