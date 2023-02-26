@@ -1,3 +1,21 @@
+
+<script>
+  let registerFormData = {
+    fullName: "",
+    nickName: "",
+    email: "",
+    avatar: "",
+    password: "",
+    passwordConfirmation: "",
+  }
+
+  function submitForm() {
+    alert(JSON.stringify(registerFormData));
+  }
+
+</script>
+
+
 <form class="flex-it">
   <div class="flex-it overflow-hidden sm:rounded-md">
     <div class="flex-it">
@@ -5,6 +23,7 @@
         <div class="flex-it py-2">
           <label for="fullName" class="block text-sm font-medium text-gray-700"> Full Name </label>
           <input
+            bind:value={registerFormData.fullName}
             type="text"
             name="fullName"
             id="fullName"
@@ -18,6 +37,7 @@
         <div class="flex-it py-2">
           <label for="nickName" class="block text-sm font-medium text-gray-700"> Nick Name </label>
           <input
+            bind:value={registerFormData.nickName}
             type="text"
             name="nickName"
             id="nickName"
@@ -28,6 +48,7 @@
         <div class="flex-it py-2">
           <label for="email" class="block text-sm font-medium text-gray-700"> Email </label>
           <input
+            bind:value={registerFormData.email}
             type="text"
             name="email"
             id="email"
@@ -38,6 +59,7 @@
         <div class="flex-it py-2">
           <label for="avatar" class="block text-sm font-medium text-gray-700"> Avatar </label>
           <input
+            bind:value={registerFormData.avatar}
             type="text"
             name="avatar"
             id="avatar"
@@ -48,6 +70,7 @@
         <div class="flex-it py-2">
           <label for="password" class="block text-sm font-medium text-gray-700"> Password </label>
           <input
+            bind:value={registerFormData.password}
             type="password"
             name="password"
             id="password"
@@ -60,6 +83,7 @@
             Password Confirmation
           </label>
           <input
+            bind:value={registerFormData.passwordConfirmation}
             type="password"
             name="passwordConfirmation"
             id="passwordConfirmation"
@@ -74,6 +98,7 @@
     </div>
     <div class="flex-it py-2">
       <button
+        on:click={submitForm}
         type="button"
         class="
               bg-blue-400 hover:bg-blue-500 focus:ring-0
