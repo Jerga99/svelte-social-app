@@ -1,6 +1,8 @@
 
 <script>
-  import { validate } from "@actions/validate";
+  import { formHandlerStore } from "@stores/formHandler";
+
+  const { validate } = formHandlerStore;
 
   let registerFormData = {
     fullName: "",
