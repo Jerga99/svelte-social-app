@@ -4,17 +4,18 @@ import { writable } from "svelte/store";
 
 export function createFormStore(initialData) {
   const form = writable(initialData);
+  const errors = writable({});
 
   function validate(node) {
-    node.onblur = checkValidity();
+    node.onblur = checkValidity(node);
   }
 
-  const checkValidity = () => () => {
+  const checkValidity = (element) => () => {
     const errorMessage = "ERROR ERROR ERROR!";
-    const isValid = true;
+    const isValid = false;
 
     if (!isValid) {
-      alert(errorMessage);
+      errors.set({[element.name]: errorMessage});
     } else {
       alert("No Errors!");
     }
@@ -22,7 +23,8 @@ export function createFormStore(initialData) {
 
   return {
     validate,
-    form
+    form,
+    errors: {subscribe: errors.subscribe}
   }
 }
 
