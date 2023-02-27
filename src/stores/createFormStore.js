@@ -15,7 +15,12 @@ export function createFormStore(initialData) {
     const isValid = false;
 
     if (!isValid) {
-      errors.set({[element.name]: errorMessage});
+      // errors.update((_errors) => {
+      //   _errors[element.name] = errorMessage;
+      //   return _errors;
+      // })
+
+      errors.update((_errors) => ({..._errors, [element.name]: errorMessage}));
     } else {
       alert("No Errors!");
     }
