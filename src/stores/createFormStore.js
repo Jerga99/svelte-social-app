@@ -11,8 +11,8 @@ export function createFormStore(initialData) {
   }
 
   const checkValidity = (element) => () => {
-    const errorMessage = "ERROR ERROR ERROR!";
-    const isValid = validator();
+    const errorMessage = `${element.name} should have max 7 characters`;
+    const isValid = validator(element);
 
     if (!isValid) {
       // errors.update((_errors) => {
@@ -26,8 +26,10 @@ export function createFormStore(initialData) {
     }
   }
 
-  function validator() {
-    return Math.floor(Math.random() * 2) === 0 ? false : true;
+  function validator(element) {
+    if (element.value.lenght === 0) { return true; }
+
+    return element.value.length < 7;
   }
 
   return {
