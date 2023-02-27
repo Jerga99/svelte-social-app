@@ -1,6 +1,6 @@
 
 <script>
-  import { validate } from "@components/actions/validate";
+  import { validate } from "@actions/validate";
 
   let registerFormData = {
     fullName: "",
