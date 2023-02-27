@@ -12,7 +12,7 @@ export function createFormStore(initialData) {
 
   const checkValidity = (element) => () => {
     const errorMessage = "ERROR ERROR ERROR!";
-    const isValid = false;
+    const isValid = validator();
 
     if (!isValid) {
       // errors.update((_errors) => {
@@ -22,8 +22,12 @@ export function createFormStore(initialData) {
 
       errors.update((_errors) => ({..._errors, [element.name]: errorMessage}));
     } else {
-      alert("No Errors!");
+      errors.update((_errors) => ({..._errors, [element.name]: ""}));
     }
+  }
+
+  function validator() {
+    return Math.floor(Math.random() * 2) === 0 ? false : true;
   }
 
   return {
