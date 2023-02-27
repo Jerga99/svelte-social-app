@@ -5,14 +5,18 @@ import { writable } from "svelte/store";
 export function createFormStore(initialData) {
   const form = writable(initialData);
 
-  function validate(node, value) {
-    
-    node.onblur = (e) => {
-      console.log(`blur on ${e.target.name} called with value ${e.target.value}`);
-    }
+  function validate(node) {
+    node.onblur = checkValidity();
+  }
 
-    node.oninput = (e) => {
-      console.log(`onInput on ${e.target.name} called with value ${e.target.value}`);
+  const checkValidity = () => () => {
+    const errorMessage = "ERROR ERROR ERROR!";
+    const isValid = true;
+
+    if (!isValid) {
+      alert(errorMessage);
+    } else {
+      alert("No Errors!");
     }
   }
 
