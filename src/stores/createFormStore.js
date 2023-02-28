@@ -35,6 +35,18 @@ export function createFormStore(initialData) {
   }
 }
 
+export function requiredValidator({name, value}) {
+  return value.length === 0 ? `${name} is required` : "";
+}
+
+export function minLengthValidator(element, minLength = 7) {
+  if (
+    element.value.length === 0 ||
+    element.value.length > minLength
+  ) { return ""; }
+
+  return `${element.name} should be more than ${minLength} characters`;
+}
 
 export function maxLengthValidator(element, maxLength = 7) {
   if (
@@ -42,7 +54,7 @@ export function maxLengthValidator(element, maxLength = 7) {
     element.value.length < maxLength
   ) { return ""; }
 
-  return `${element.name} should be less then ${maxLength} characters`;
+  return `${element.name} should be less than ${maxLength} characters`;
 }
 
 export function firstUppercaseLetter({value, name}) {
