@@ -13,6 +13,10 @@ export function createFormStore(initialData) {
     validatorFields[node.name] = config = {element: node, validators};
 
     node.onblur = checkValidity(config);
+    node.oninput = () => {
+      if (!get(errors)[node.name]) { return; }
+      checkValidity(config)();
+    };
   }
 
   function isValid() {
