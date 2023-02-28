@@ -35,8 +35,22 @@ export function createFormStore(initialData) {
   }
 }
 
+// "myFullName" -> ["my", "full", "Name"]
+
+function niceName(text) {
+  const words = text.split(/(?=[A-Z])/);
+
+  return (words.map((word, i) => {
+    if (i === 0) {
+      return word[0].toUpperCase() + word.substring(1);
+    }
+
+    return word.toLowerCase();
+  })).join(" ");
+}
+
 export function requiredValidator({name, value}) {
-  return value.length === 0 ? `${name} is required` : "";
+  return value.length === 0 ? `${niceName(name)} is required` : "";
 }
 
 export function minLengthValidator(element, minLength = 7) {
@@ -45,7 +59,7 @@ export function minLengthValidator(element, minLength = 7) {
     element.value.length > minLength
   ) { return ""; }
 
-  return `${element.name} should be more than ${minLength} characters`;
+  return `${niceName(element.name)} should be more than ${minLength} characters`;
 }
 
 export function maxLengthValidator(element, maxLength = 7) {
@@ -54,7 +68,7 @@ export function maxLengthValidator(element, maxLength = 7) {
     element.value.length < maxLength
   ) { return ""; }
 
-  return `${element.name} should be less than ${maxLength} characters`;
+  return `${niceName(element.name)} should be less than ${maxLength} characters`;
 }
 
 export function firstUppercaseLetter({value, name}) {
@@ -62,6 +76,6 @@ export function firstUppercaseLetter({value, name}) {
 
   return value[0] === value[0].toUpperCase() ? 
     "" : 
-    `${name} first letter should be uppercased`;
+    `${niceName(name)} first letter should be uppercased`;
 }
 
