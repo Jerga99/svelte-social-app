@@ -11,19 +11,15 @@ export function createFormStore(initialData) {
   }
 
   const checkValidity = (element, validators) => () => {
-    const errorMessage = maxLengthValidator(element, 3);
+    
+    for (const validator of validators) {
+      const errorMessage = validator(element);
 
-    console.log(validators);
-
-    if (errorMessage) {
-      // errors.update((_errors) => {
-      //   _errors[element.name] = errorMessage;
-      //   return _errors;
-      // })
-
-      errors.update((_errors) => ({..._errors, [element.name]: errorMessage}));
-    } else {
-      errors.update((_errors) => ({..._errors, [element.name]: ""}));
+      if (errorMessage) {
+        errors.update((_errors) => ({..._errors, [element.name]: errorMessage}));
+      } else {
+        errors.update((_errors) => ({..._errors, [element.name]: ""}));
+      }
     }
   }
 
