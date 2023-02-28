@@ -15,6 +15,19 @@ export function createFormStore(initialData) {
     node.onblur = checkValidity(config);
   }
 
+  function isValid() {
+    const _errors = get(errors);
+    const keys = Object.keys(_errors);
+
+    if (keys.length === 0) {
+      return false;
+    }
+
+    return keys.every((errorKey) => {
+      return _errors[errorKey].length === 0;
+    });
+  }
+
   const checkValidity = ({element, validators}) => () => {
     errors.update(_errors => {
       _errors[element.name] = [];
@@ -40,7 +53,9 @@ export function createFormStore(initialData) {
       checkValidity(config)();
     }
 
-    callback(get(form));
+    if (isValid()) {
+      callback(get(form));
+    }
   }
 
   return {
