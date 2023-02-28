@@ -1,16 +1,16 @@
 
 <script>
-  import { createFormStore } from "@stores/createFormStore";
+  import { createFormStore, requiredValidator } from "@stores/createFormStore";
+  import FormErrors from "./FormErrors.svelte";
 
-  const { validate, form } = createFormStore({
+  const { validate, errors, setValue, submitForm } = createFormStore({
     email: "",
     password: ""
   });
 
-  function submitForm() {
-    alert(JSON.stringify($form));
+  function handleFormSubmit(loginFormData) {
+    alert(JSON.stringify(loginFormData));
   }
-
 </script>
 
 
@@ -21,27 +21,26 @@
         <div class="flex-it py-2">
           <label for="email" class="block text-sm font-medium text-gray-700"> Email </label>
           <input
-            bind:value={$form.email}
-            use:validate={[1]}
+            on:input={setValue}
+            use:validate={[requiredValidator]}
             type="email"
             name="email"
             id="email"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
-          <div class="flex-it grow text-xs bg-red-400 text-white p-3 pl-3 mt-1 rounded-md">
-            Error Error Beep Beep!
-          </div>
+          <FormErrors errors={$errors.email} />
         </div>
         <div class="flex-it py-2">
           <label for="password" class="block text-sm font-medium text-gray-700"> Password </label>
           <input
-            bind:value={$form.password}
-            use:validate={[2]}
+            on:input={setValue}
+            use:validate={[requiredValidator]}
             type="password"
             name="password"
             id="password"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
+          <FormErrors errors={$errors.password} />
         </div>
       </div>
     </div>
@@ -51,7 +50,7 @@
     </div>
     <div class="flex-it py-2">
       <button
-        on:click={submitForm}
+        on:click={submitForm(handleFormSubmit)}
         type="button"
         class="
               bg-blue-400 hover:bg-blue-500
