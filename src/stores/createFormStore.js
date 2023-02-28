@@ -35,7 +35,13 @@ export function createFormStore(initialData) {
   return {
     submitForm,
     validate,
-    form,
+    setValue: (e) => {
+      const { value, name } = e.target;
+      form.update((_form) => {
+        _form[name] = value;
+        return _form;
+      }) 
+    },
     errors: {subscribe: errors.subscribe}
   }
 }
