@@ -4,7 +4,8 @@
     createFormStore, 
     minLengthValidator,
     firstUppercaseLetter,
-    requiredValidator
+    requiredValidator,
+    compareWithValidator
   } from "@stores/createFormStore";
   import FormErrors from "./FormErrors.svelte";
   
@@ -105,7 +106,10 @@
           </label>
           <input
             on:input={setValue}
-            use:validate={[requiredValidator]}
+            use:validate={[
+              requiredValidator,
+              (ele) => compareWithValidator(ele, "password")
+            ]}
             type="password"
             name="passwordConfirmation"
             id="passwordConfirmation"

@@ -86,6 +86,17 @@ function niceName(text) {
   })).join(" ");
 }
 
+export const compareWithValidator = (element, compareToFieldName) => (form) => {
+  if (element.value.length === 0) { return ""; }
+
+  const compareToValue = form[compareToFieldName];
+
+  return element.value === compareToValue ? 
+    "" : 
+    `${niceName(element.name)} should be same as ${niceName(compareToFieldName)}`;
+
+}
+
 export const requiredValidator = ({name, value}) => (form) => {
   console.log(form);
   return value.length === 0 ? `${niceName(name)} is required` : "";
