@@ -101,8 +101,7 @@ export const compareWithValidator = (element, compareToFieldName) => (form) => {
 
 }
 
-export const requiredValidator = ({name, value}) => (form) => {
-  console.log(form);
+export const requiredValidator = ({name, value}) => () => {
   return value.length === 0 ? `${niceName(name)} is required` : "";
 }
 
