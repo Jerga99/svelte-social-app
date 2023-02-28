@@ -31,7 +31,11 @@
           <label for="fullName" class="block text-sm font-medium text-gray-700"> Full Name </label>
           <input
             bind:value={$form.fullName}
-            use:validate={[requiredValidator, minLengthValidator, firstUppercaseLetter]}
+            use:validate={[
+              requiredValidator, 
+              (ele) => minLengthValidator(ele, 5), 
+              firstUppercaseLetter
+            ]}
             type="text"
             name="fullName"
             id="fullName"
@@ -44,7 +48,10 @@
           <label for="nickName" class="block text-sm font-medium text-gray-700"> Nick Name </label>
           <input
             bind:value={$form.nickName}
-            use:validate={[requiredValidator, minLengthValidator]}
+            use:validate={[
+              requiredValidator, 
+              (ele) => minLengthValidator(ele, 3), 
+            ]}
             type="text"
             name="nickName"
             id="nickName"
