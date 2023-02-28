@@ -1,6 +1,6 @@
 
 <script>
-  import { createFormStore, maxLengthValidator } from "@stores/createFormStore";
+  import { createFormStore, maxLengthValidator, firstUppercaseLetter } from "@stores/createFormStore";
   
   const { validate, form, errors } = createFormStore({
     fullName: "",
@@ -27,7 +27,7 @@
           <label for="fullName" class="block text-sm font-medium text-gray-700"> Full Name </label>
           <input
             bind:value={$form.fullName}
-            use:validate={[maxLengthValidator]}
+            use:validate={[maxLengthValidator, firstUppercaseLetter]}
             type="text"
             name="fullName"
             id="fullName"
@@ -42,7 +42,7 @@
           <label for="nickName" class="block text-sm font-medium text-gray-700"> Nick Name </label>
           <input
             bind:value={$form.nickName}
-            use:validate={[maxLengthValidator]}
+            use:validate={[maxLengthValidator, firstUppercaseLetter]}
             type="text"
             name="nickName"
             id="nickName"

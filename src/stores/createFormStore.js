@@ -40,3 +40,11 @@ export function maxLengthValidator(element, maxLength = 7) {
   return `${element.name} should be less then ${maxLength} characters`;
 }
 
+export function firstUppercaseLetter({value, name}) {
+  if (value.length === 0) { return ""; }
+
+  return value[0] === value[0].toUpperCase() ? 
+    "" : 
+    `${name} first letter should be uppercased`;
+}
+
