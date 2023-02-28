@@ -1,6 +1,7 @@
 
 <script>
   import { createFormStore, maxLengthValidator, firstUppercaseLetter } from "@stores/createFormStore";
+  import FormErrors from "./FormErrors.svelte";
   
   const { validate, form, errors } = createFormStore({
     fullName: "",
@@ -17,8 +18,6 @@
 
 </script>
 
-
-{JSON.stringify($errors)}
 <form class="flex-it">
   <div class="flex-it overflow-hidden sm:rounded-md">
     <div class="flex-it">
@@ -33,9 +32,9 @@
             id="fullName"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
-          <div class="flex-it grow text-xs bg-red-400 text-white p-3 pl-3 mt-1 rounded-md">
-            Error Error Beep Beep!
-          </div>
+          <FormErrors>
+            {JSON.stringify($errors.fullName)}
+          </FormErrors>
         </div>
 
         <div class="flex-it py-2">
@@ -48,6 +47,9 @@
             id="nickName"
             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           />
+          <FormErrors>
+            {JSON.stringify($errors.nickName)}
+          </FormErrors>
         </div>
 
         <div class="flex-it py-2">
