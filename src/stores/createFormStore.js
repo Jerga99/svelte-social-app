@@ -1,5 +1,5 @@
 
-import { writable } from "svelte/store";
+import { get, writable } from "svelte/store";
 
 
 export function createFormStore(initialData) {
@@ -28,7 +28,12 @@ export function createFormStore(initialData) {
     }
   }
 
+  const submitForm = (callback) => () => {
+    callback(get(form));
+  }
+
   return {
+    submitForm,
     validate,
     form,
     errors: {subscribe: errors.subscribe}
