@@ -35,7 +35,7 @@ export function createFormStore(initialData) {
     });
     
     for (const validator of validators) {
-      const errorMessage = validator(element);
+      const errorMessage = validator(element)(get(form));
 
       if (errorMessage) {
         errors.update(_errors => {
@@ -86,11 +86,12 @@ function niceName(text) {
   })).join(" ");
 }
 
-export function requiredValidator({name, value}) {
+export const requiredValidator = ({name, value}) => (form) => {
+  console.log(form);
   return value.length === 0 ? `${niceName(name)} is required` : "";
 }
 
-export function minLengthValidator(element, minLength = 7) {
+export const minLengthValidator = (element, minLength = 7) => () => {
   if (
     element.value.length === 0 ||
     element.value.length > minLength
@@ -99,7 +100,7 @@ export function minLengthValidator(element, minLength = 7) {
   return `${niceName(element.name)} should be more than ${minLength} characters`;
 }
 
-export function maxLengthValidator(element, maxLength = 7) {
+export const maxLengthValidator = (element, maxLength = 7) => () => {
   if (
     element.value.length === 0 ||
     element.value.length < maxLength
@@ -108,7 +109,7 @@ export function maxLengthValidator(element, maxLength = 7) {
   return `${niceName(element.name)} should be less than ${maxLength} characters`;
 }
 
-export function firstUppercaseLetter({value, name}) {
+export const firstUppercaseLetter = ({value, name}) => () => {
   if (value.length === 0) { return ""; }
 
   return value[0] === value[0].toUpperCase() ? 
