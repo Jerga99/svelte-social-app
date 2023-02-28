@@ -6,11 +6,16 @@ export function createFormStore(initialData) {
   const form = writable(initialData);
   const errors = writable({});
 
+  const validatorFields = {};
+
   function validate(node, validators = []) {
-    node.onblur = checkValidity(node, validators);
+    let config;
+    validatorFields[node.name] = config = {element: node, validators};
+
+    node.onblur = checkValidity(config);
   }
 
-  const checkValidity = (element, validators) => () => {
+  const checkValidity = ({element, validators}) => () => {
     errors.update(_errors => {
       _errors[element.name] = [];
       return _errors;
@@ -29,6 +34,12 @@ export function createFormStore(initialData) {
   }
 
   const submitForm = (callback) => () => {
+    for (const field in validatorFields) {
+      const config = validatorFields[field];
+
+      checkValidity(config)();
+    }
+
     callback(get(form));
   }
 
