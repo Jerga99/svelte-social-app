@@ -11,10 +11,9 @@ export function createFormStore(initialData) {
   }
 
   const checkValidity = (element) => () => {
-    const errorMessage = `${element.name} should have max 7 characters`;
-    const isValid = validator(element);
+    const errorMessage = maxLengthValidator(element, 3);
 
-    if (!isValid) {
+    if (errorMessage) {
       // errors.update((_errors) => {
       //   _errors[element.name] = errorMessage;
       //   return _errors;
@@ -26,10 +25,13 @@ export function createFormStore(initialData) {
     }
   }
 
-  function validator(element) {
-    if (element.value.lenght === 0) { return true; }
+  function maxLengthValidator(element, maxLength = 7) {
+    if (
+      element.value.length === 0 ||
+      element.value.length < maxLength
+    ) { return ""; }
 
-    return element.value.length < 7;
+    return `${element.name} should be less then ${maxLength} characters`;
   }
 
   return {
