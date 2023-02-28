@@ -1,9 +1,7 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+
 const firebaseConfig = {
   apiKey: "AIzaSyD9MIvlUMT-_hk56HKF4D3e7Bbs6Ueo9Lg",
   authDomain: "svelte-social.firebaseapp.com",
@@ -15,3 +13,13 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
+
+export async function getUsers() {
+  const usersCol = collection(db, "users");
+  const userSnap = await getDocs(usersCol);
+  
+  const userList = userSnap.docs.map(doc => doc.data());
+  console.log(userList);
+  return userList;
+}
