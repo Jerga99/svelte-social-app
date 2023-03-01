@@ -21,7 +21,15 @@
   }
 
   const removeSnackbar = (id) => () => {
-    alert(`Should remove snack with id: ${id}`);
+    snackbars.update(list => {
+      const index = list.findIndex((snackbar) => snackbar.id === id);
+
+      if (index > -1) {
+        list.splice(index, 1);
+      }
+
+      return list;
+    })
   }
 
   setContext(key, {
