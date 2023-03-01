@@ -4,7 +4,11 @@
   import { writable } from "svelte/store";
   import { key } from ".";
 
-  let snackbars = writable(["Message 1", "Message 2", "Message 3"]);
+  let snackbars = writable([
+    { message: "You have been logged in!", type: "success" }, 
+    { message: "Ooops, something went wrong", type: "error" }, 
+    { message: "Please, verify your profile", type: "warning" }
+  ]);
 
   let isXl = writable(false);
   let isLg = writable(false);

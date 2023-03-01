@@ -1,9 +1,8 @@
 <script>
   import TiTimesOutline from 'svelte-icons/ti/TiTimesOutline.svelte'
   
-  const type = "error";
-
   export let message;
+  export let type = "warning";
 
   let bgColor;
 
@@ -12,7 +11,7 @@
   } else if (type === "error") {
     bgColor = "bg-red-700";
   } else {
-    bgColor = "bg-yellow-700";
+    bgColor = "bg-yellow-500";
   }
 </script>
 
