@@ -6,8 +6,9 @@ function logoutUser() {
   return signOut(firebaseAuth);
 }
 
-function loginUser(form) {
-  return signInWithEmailAndPassword(firebaseAuth, form.email, form.password);
+async function loginUser(form) {
+  const { user } = await signInWithEmailAndPassword(firebaseAuth, form.email, form.password);
+  return user;
 }
 
 async function registerUser(form) {
@@ -30,4 +31,8 @@ async function registerUser(form) {
   return registeredUser;
 }
 
-export { registerUser, logoutUser, loginUser }
+function authenticate(form, type) {
+  return type === "login" ? loginUser(form) : registerUser(form);
+}
+
+export { logoutUser, authenticate }

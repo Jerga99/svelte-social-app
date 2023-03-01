@@ -1,10 +1,12 @@
 <script>
-  import { loginUser } from "@api/auth";
   import LoginForm from "@components/forms/LoginForm.svelte";
   import AuthLayout from "@components/layouts/AuthLayout.svelte";
+  import { createAuthStore } from "@stores/createAuthStore";
+
+  const { authUser } = createAuthStore("login");
 
   async function login(formData) {
-    await loginUser(formData);
+    authUser(formData);
   }
 
 </script>
