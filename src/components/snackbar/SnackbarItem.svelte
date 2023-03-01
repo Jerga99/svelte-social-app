@@ -3,6 +3,7 @@
   
   export let message;
   export let type = "warning";
+  export let onClose;
 
   let bgColor;
 
@@ -19,7 +20,9 @@
   class="{bgColor} min-w-68 text-white flex-it font-bold rounded-md md:max-w-xs w-full text-sm shadow-md"
 > 
   <div class="flex-it flex-row-reverse p-1">
-    <button class="text-xl rounded-full">
+    <button 
+      on:click={onClose}
+      class="text-xl rounded-full">
       <div class="icon">
         <TiTimesOutline />
       </div>
