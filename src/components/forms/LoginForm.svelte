@@ -8,9 +8,8 @@
     password: ""
   });
 
-  function handleFormSubmit(loginFormData) {
-    alert(JSON.stringify(loginFormData));
-  }
+  export let onFormSubmit;
+
 </script>
 
 
@@ -50,7 +49,7 @@
     </div>
     <div class="flex-it py-2">
       <button
-        on:click={submitForm(handleFormSubmit)}
+        on:click={submitForm(onFormSubmit)}
         type="button"
         class="
               bg-blue-400 hover:bg-blue-500
