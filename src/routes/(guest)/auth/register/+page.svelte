@@ -3,7 +3,7 @@
   import AuthLayout from "@components/layouts/AuthLayout.svelte";
   import { createAuthStore } from "@stores/createAuthStore";
 
-  const { authUser } = createAuthStore("register");
+  const { authUser, loading } = createAuthStore("register");
 
   async function register(formData) {
     authUser(formData);
@@ -12,5 +12,8 @@
 </script>
 
 <AuthLayout title="Create Account">
-  <RegisterForm onFormSubmit={register} />
+  <RegisterForm 
+    onFormSubmit={register} 
+    loading={$loading}
+  />
 </AuthLayout>
