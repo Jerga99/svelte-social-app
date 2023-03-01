@@ -3,6 +3,8 @@
   
   const type = "error";
 
+  export let message;
+
   let bgColor;
 
   if (type === "success") {
@@ -25,7 +27,7 @@
     </button>
   </div>
   <div class="flex-it px-2 pb-3">
-    Hello World
+    {message}
   </div>
   <div 
     style="width: {100}%"

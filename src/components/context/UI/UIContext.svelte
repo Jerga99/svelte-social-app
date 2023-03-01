@@ -4,6 +4,8 @@
   import { writable } from "svelte/store";
   import { key } from ".";
 
+  let snackbars = writable(["Message 1", "Message 2", "Message 3"]);
+
   let isXl = writable(false);
   let isLg = writable(false);
   
@@ -16,7 +18,8 @@
 
   setContext(key, {
     isXl,
-    isLg
+    isLg,
+    snackbars
   });
 
 </script>
