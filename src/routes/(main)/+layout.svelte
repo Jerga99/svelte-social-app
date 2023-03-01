@@ -3,17 +3,17 @@
   import { getAuthContext } from "@components/context/auth";
   import MainLayout from "@components/layouts/MainLayout.svelte";
 
-  const { isAuthenticated } = getAuthContext();
+  const { auth } = getAuthContext();
 
   export let data;
 
-  if (!$isAuthenticated) {
+  if (!$auth.isAuthenticated) {
     goto("/auth/login");
   }
 
 </script>
 
-{#if $isAuthenticated}
+{#if $auth.isAuthenticated}
   <MainLayout trends={data.trends}>
     <slot />
   </MainLayout>
