@@ -1,28 +1,31 @@
 
 <script>
+  import { onAuthStateChanged } from "firebase/auth";
   import Loader from "@components/utils/Loader.svelte";
-  import { setContext } from "svelte";
+  import { onMount, setContext } from "svelte";
   import { writable } from "svelte/store";
   import { key } from ".";
+  import { firebaseAuth } from "@db/index";
 
   let isLoading = writable(true);
-  let isAuthenticated = writable(false, (set) => {
-    setTimeout(() => {
-      set(false); // isAuthenticated setter
-      isLoading.set(false);
-    }, 1000);
-  });
+  let isAuthenticated = writable(false);
 
   setContext(key, {
     isAuthenticated, isLoading
   })
 
-</script>
+  onMount(() => {
+    onAuthStateChanged(firebaseAuth, (user) => {
+      if (user) {
+        isAuthenticated.set(true);
+      } else {
+        isAuthenticated.set(false);
+      }
 
-<!-- Just to subscribe so start function can be called -->
-<div style="display:none;">
-  {$isAuthenticated}
-</div>
+      isLoading.set(false);
+    })
+  })
+</script>
 
 {#if $isLoading}
   <Loader size={150} />
