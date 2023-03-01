@@ -1,8 +1,10 @@
 <script>
   import { getAuthContext } from "@components/context/auth";
+  import { getUIContext } from "@components/context/UI";
   import TiImageOutline from "svelte-icons/ti/TiImageOutline.svelte";
 
   const { auth } = getAuthContext();
+  const { addSnackbar } = getUIContext();
 
   let glideContent = "";
 
@@ -10,6 +12,8 @@
 
   function createGlide() {
     console.log("Should create a new glide!");
+
+    addSnackbar("Glide Created!", "success");
   }
   
 </script>

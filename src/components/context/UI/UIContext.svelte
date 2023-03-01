@@ -4,11 +4,7 @@
   import { writable } from "svelte/store";
   import { key } from ".";
 
-  let snackbars = writable([
-    { message: "You have been logged in!", type: "success" }, 
-    { message: "Ooops, something went wrong", type: "error" }, 
-    { message: "Please, verify your profile", type: "warning" }
-  ]);
+  let snackbars = writable([]);
 
   let isXl = writable(false);
   let isLg = writable(false);
@@ -20,10 +16,15 @@
     $isLg = innerWidth > 1024;
   }
 
+  function addSnackbar(message, type) {
+    snackbars.update(list => [{message, type}, ...list])
+  }
+
   setContext(key, {
     isXl,
     isLg,
-    snackbars
+    snackbars,
+    addSnackbar
   });
 
 </script>
