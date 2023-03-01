@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
-  import TiTimesOutline from 'svelte-icons/ti/TiTimesOutline.svelte'
+  import TiTimesOutline from 'svelte-icons/ti/TiTimesOutline.svelte';
+  import { fly } from "svelte/transition";
 
   const INTERVAL_STEP = 50;
   
@@ -38,6 +39,8 @@
 </script>
 
 <div
+  in:fly={{x: 200}}
+  out:fly={{x: 200}}
   class="{bgColor} min-w-68 text-white flex-it font-bold rounded-md md:max-w-xs w-full text-sm shadow-md"
 > 
   <div class="flex-it flex-row-reverse p-1">
