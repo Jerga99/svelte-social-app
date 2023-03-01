@@ -36,7 +36,6 @@
 
   async function logout() {
     await logoutUser();
-    window.location.reload();
   }
 
 </script>
