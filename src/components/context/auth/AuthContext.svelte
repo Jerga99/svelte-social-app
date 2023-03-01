@@ -6,6 +6,7 @@
   import { writable } from "svelte/store";
   import { key } from ".";
   import { firebaseAuth } from "@db/index";
+  import { getUser } from "@api/users";
 
   let isLoading = writable(true);
   let auth = writable({
@@ -20,9 +21,11 @@
   onMount(listenToAuthChanges);
 
   function listenToAuthChanges() {
-    onAuthStateChanged(firebaseAuth, (user) => {
+    onAuthStateChanged(firebaseAuth, async (user) => {
       if (user) {
-        auth.set({isAuthenticated: true, user});
+        const gliderUser = await getUser(user.uid);
+        console.log(gliderUser);
+        auth.set({isAuthenticated: true, user: gliderUser});
       } else {
         auth.set({isAuthenticated: false, user: null});
       }
