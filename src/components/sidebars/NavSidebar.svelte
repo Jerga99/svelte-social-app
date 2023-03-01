@@ -4,8 +4,12 @@
   import TiSocialFlickr from "svelte-icons/ti/TiSocialFlickr.svelte";
   import TiBrush from "svelte-icons/ti/TiBrush.svelte";
   import { navLinks } from "./navLinks";
+  import { getAuthContext } from "@components/context/auth";
 
   const { isXl } = getUIContext();
+  const { auth } = getAuthContext();
+
+  $: user = $auth?.user;
 
 </script>
 
@@ -67,12 +71,12 @@
                   <img
                     alt=""
                     class="rounded-full"
-                    src="https://www.pinclipart.com/picdir/middle/133-1331433_free-user-avatar-icons-happy-flat-design-png.png"
+                    src={user?.avatar}
                   />
                 </div>
               </div>
               <div class="flex-it xl:flex hidden flex-grow flex-row justify-between items-center">
-                <div class="flex-it mx-3 font-bold">Filip99</div>
+                <div class="flex-it mx-3 font-bold">{user?.nickName}</div>
                 <div class="flex-it">
                   <div class="icon">
                     <TiSocialFlickr />
