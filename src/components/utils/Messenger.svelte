@@ -6,14 +6,15 @@
   const { auth } = getAuthContext();
   const { addSnackbar } = getUIContext();
 
+  export let onGlidePosted;
+
   let glideContent = "";
 
   $: user = $auth?.user;
 
   function createGlide() {
-    console.log("Should create a new glide!");
-
     addSnackbar("Glide Created!", "success");
+    onGlidePosted();
   }
   
 </script>
