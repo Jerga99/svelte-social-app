@@ -8,13 +8,32 @@
 
   export let onGlidePosted;
 
-  let glideContent = "";
+  let form = { content: "" };
+  let loading = false;
 
   $: user = $auth?.user;
 
-  function createGlide() {
+  async function createGlide() {
+    loading = true;
+    
+    // Making request to store the glide to FS
+    const glide = {
+      ...form,
+      uid: user.uid
+    };
+
+    await new Promise((res) => {
+      setTimeout(() => {
+        res(true);
+      }, 1000);
+    })
+
+    // insert new glide  into glides array in store
+    onGlidePosted(glide);
     addSnackbar("Glide Created!", "success");
-    onGlidePosted();
+
+    loading = false;
+    form.content = "";
   }
   
 </script>
@@ -33,8 +52,12 @@
   </div>
   <div class="flex-it flex-grow">
     <div class="flex-it">
+
+      <div class="text-white">
+        {loading}
+      </div>
       <textarea
-        bind:value={glideContent}
+        bind:value={form.content}
         name="content"
         rows="1"
         id="glide"
