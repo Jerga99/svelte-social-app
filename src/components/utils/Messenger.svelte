@@ -26,8 +26,11 @@
 
     try {
       const glide = await createGlide(glideData);
-      console.log(glide);
-      onGlidePosted(glideData);
+      const userData = {
+        nickName: user.nickName,
+        avatar: user.avatar
+      };
+      onGlidePosted({...glide, user: userData });
       addSnackbar("Glide Created!", "success");
       form.content = "";
     } catch(e) {

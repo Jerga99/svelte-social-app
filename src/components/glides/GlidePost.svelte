@@ -2,6 +2,7 @@
   import TiTrash from "svelte-icons/ti/TiTrash.svelte";
   import TiMessage from "svelte-icons/ti/TiMessage.svelte";
   import TiHeartOutline from "svelte-icons/ti/TiHeartOutline.svelte";
+  import moment from "moment";
 
   export let glide;
 </script>
@@ -25,7 +26,9 @@
           <div>
             <span class="font-bold">{glide.user.nickName}</span>
             <span class="mx-2">&#8226;</span>
-            <span class="text-gray-400">2h</span>
+            <span class="text-gray-400">
+              {moment(glide.date.toDate().toISOString()).fromNow()}
+            </span>
           </div>
           <div class="text-gray-400 cursor-pointer transition hover:text-red-400">
             <div class="icon">
