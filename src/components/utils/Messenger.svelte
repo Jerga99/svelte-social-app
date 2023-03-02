@@ -1,4 +1,5 @@
 <script>
+  import { createGlide } from "@api/glides";
   import { getAuthContext } from "@components/context/auth";
   import { getUIContext } from "@components/context/UI";
   import TiImageOutline from "svelte-icons/ti/TiImageOutline.svelte";
@@ -14,23 +15,17 @@
   $: user = $auth?.user;
   $: sendDisabled = loading || form.content === "";
 
-  async function createGlide() {
+  async function submitGlide() {
     loading = true;
     
     // Making request to store the glide to FS
-    const glide = {
+    const glideData = {
       ...form,
       uid: user.uid
     };
 
-    await new Promise((res) => {
-      setTimeout(() => {
-        res(true);
-      }, 1000);
-    })
-
-    // insert new glide  into glides array in store
-    onGlidePosted(glide);
+    createGlide(glideData);
+    onGlidePosted(glideData);
     addSnackbar("Glide Created!", "success");
 
     loading = false;
@@ -75,7 +70,7 @@
       </div>
       <div class="flex-it w-32 mt-3 cursor-pointer">
         <button
-          on:click={createGlide}
+          on:click={submitGlide}
           disabled={sendDisabled}
           type="button"
           class="
