@@ -1,9 +1,14 @@
 
 import { db } from "@db/index";
-import { Timestamp, doc, collection, getDocs, getDoc, query, addDoc } from "firebase/firestore"
+import { Timestamp, doc, collection, getDocs, getDoc, query, addDoc, orderBy, limit } from "firebase/firestore"
 
 async function fetchGlides() {
-  const q = query(collection(db, "glides"));
+  const constraints = [
+    orderBy("date", "desc"),
+    limit(10)
+  ];
+
+  const q = query(collection(db, "glides"), ...constraints);
   const qSnapshot = await getDocs(q);
 
   const glides = await Promise.all(qSnapshot.docs.map(async doc => {

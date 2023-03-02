@@ -4,7 +4,7 @@
   import { createGlideStore } from "@stores/createGlideStore";
   import GlidePost from "../../components/glides/GlidePost.svelte";
 
-  const { glides, loading,  addGlide } = createGlideStore();
+  const { glides, loading, addGlide } = createGlideStore();
 
 </script>
 
@@ -16,7 +16,7 @@
   <GlidePost {glide} />
 {/each}
 
-{#if loading}
+{#if $loading}
   <CenteredDataLoader />
 {/if}
 
