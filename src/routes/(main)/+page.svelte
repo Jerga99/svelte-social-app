@@ -3,10 +3,13 @@
   import { createGlideStore } from "@stores/createGlideStore";
   import GlidePost from "../../components/glides/GlidePost.svelte";
 
-  const { glides, addGlide } = createGlideStore();
+  const { glides, loading,  addGlide } = createGlideStore();
 
 </script>
 
+<div class="text-white">
+  {$loading}
+</div>
 <Messenger 
   onGlidePosted={addGlide}
 />
