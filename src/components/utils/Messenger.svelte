@@ -24,12 +24,16 @@
       uid: user.uid
     };
 
-    createGlide(glideData);
-    onGlidePosted(glideData);
-    addSnackbar("Glide Created!", "success");
-
-    loading = false;
-    form.content = "";
+    try {
+      createGlide(glideData);
+      onGlidePosted(glideData);
+      addSnackbar("Glide Created!", "success");
+      form.content = "";
+    } catch(e) {
+      addSnackbar(e.message, "error");
+    } finally {
+      loading = false;
+    }
   }
   
 </script>
