@@ -12,6 +12,7 @@
   let loading = false;
 
   $: user = $auth?.user;
+  $: sendDisabled = loading || form.content === "";
 
   async function createGlide() {
     loading = true;
@@ -52,10 +53,6 @@
   </div>
   <div class="flex-it flex-grow">
     <div class="flex-it">
-
-      <div class="text-white">
-        {loading}
-      </div>
       <textarea
         bind:value={form.content}
         name="content"
@@ -79,6 +76,7 @@
       <div class="flex-it w-32 mt-3 cursor-pointer">
         <button
           on:click={createGlide}
+          disabled={sendDisabled}
           type="button"
           class="
           disabled:cursor-not-allowed disabled:bg-gray-400
