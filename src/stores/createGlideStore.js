@@ -33,11 +33,6 @@ export function createGlideStore() {
   }
 
   function addGlide(glide) {
-    // pages.update(_pages => ({
-    //   ..._pages,
-    //   [FIRST_PAGE]: {glides: [glide, ..._pages[FIRST_PAGE].glides]}
-    // }));
-
     pages.update(_pages => {
       _pages[FIRST_PAGE].glides.unshift(glide);
       return _pages;
