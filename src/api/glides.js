@@ -2,6 +2,9 @@
 import { db } from "@db/index";
 import { Timestamp, doc, collection, addDoc } from "firebase/firestore"
 
+function fetchGlides() {
+  alert("Fetching new glides!");
+}
 
 async function createGlide(glideData) {
   const userRef = doc(db, "users", glideData.uid);
@@ -20,4 +23,4 @@ async function createGlide(glideData) {
   return {...glide, id: added.id};
 }
 
-export { createGlide };
+export { createGlide, fetchGlides };
