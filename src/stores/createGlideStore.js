@@ -5,7 +5,12 @@ import { writable } from "svelte/store"
 export function createGlideStore() {
   const glides = writable([]);
 
-  onMount(fetchGlides);
+  onMount(loadGlides);
+
+  async function loadGlides() {
+    const { glides } = await fetchGlides();
+    console.log(glides);
+  }
 
   function addGlide(glide) {
     glides.update(list => [glide, ...list]);

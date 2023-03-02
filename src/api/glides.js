@@ -1,9 +1,17 @@
 
 import { db } from "@db/index";
-import { Timestamp, doc, collection, addDoc } from "firebase/firestore"
+import { Timestamp, doc, collection, getDocs, query, addDoc } from "firebase/firestore"
 
-function fetchGlides() {
-  alert("Fetching new glides!");
+async function fetchGlides() {
+  const q = query(collection(db, "glides"));
+  const qSnapshot = await getDocs(q);
+
+  const glides = qSnapshot.docs.map(doc => {
+    const glide = doc.data();
+    return {...glide, id: doc.id};
+  });
+
+  return {glides};
 }
 
 async function createGlide(glideData) {
