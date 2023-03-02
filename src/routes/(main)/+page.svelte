@@ -12,9 +12,10 @@
   onGlidePosted={addGlide}
 />
 <div class="h-px bg-gray-700 my-1" />
-{#each $glides as glide (glide.id)}
+
+<!-- {#each $glides as glide (glide.id)}
   <GlidePost {glide} />
-{/each}
+{/each} -->
 
 {#if $loading}
   <CenteredDataLoader />
