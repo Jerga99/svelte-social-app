@@ -9,22 +9,23 @@ export function createGlideStore() {
   const page = writable(FIRST_PAGE);
   const loading = writable(false);
 
+  let lastGlideDoc;
+
   onMount(loadGlides);
 
   async function loadGlides() {
     const _page = get(page);
-    console.log("Loading page: " + _page);
 
     loading.set(true);
     try {
-      const { glides } = await fetchGlides();
+      const { glides, lastGlideDoc: _lastGlideDoc } = await fetchGlides();
 
       if (glides.length > 0) {
         pages.update(_pages => ({..._pages, [_page]: {glides}}));
-
-        console.log(get(pages));
       }
 
+      lastGlideDoc = _lastGlideDoc;
+      console.log(lastGlideDoc);
     } catch(e) {
       console.log(e.message);
     } finally {

@@ -11,6 +11,8 @@ async function fetchGlides() {
   const q = query(collection(db, "glides"), ...constraints);
   const qSnapshot = await getDocs(q);
 
+  const lastGlideDoc = qSnapshot.docs[qSnapshot.docs.length - 1];
+  
   const glides = await Promise.all(qSnapshot.docs.map(async doc => {
     const glide = doc.data();
     const userSnapshot = await getDoc(glide.user);
@@ -19,7 +21,7 @@ async function fetchGlides() {
     return {...glide, id: doc.id};
   }));
 
-  return {glides};
+  return {glides, lastGlideDoc};
 }
 
 async function createGlide(glideData) {

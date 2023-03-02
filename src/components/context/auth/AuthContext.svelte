@@ -24,7 +24,6 @@
     onAuthStateChanged(firebaseAuth, async (user) => {
       if (user) {
         const gliderUser = await getUser(user.uid);
-        console.log(gliderUser);
         auth.set({isAuthenticated: true, user: gliderUser});
       } else {
         auth.set({isAuthenticated: false, user: null});
