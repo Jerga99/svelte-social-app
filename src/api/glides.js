@@ -1,6 +1,6 @@
 
 import { db } from "@db/index";
-import { Timestamp, doc } from "firebase/firestore"
+import { Timestamp, doc, collection, addDoc } from "firebase/firestore"
 
 
 async function createGlide(glideData) {
@@ -12,10 +12,12 @@ async function createGlide(glideData) {
     likesCount: 0,
     subglidesCount: 0,
     date: Timestamp.now()
-  }
+  };
 
-  console.log(glide);
-  return glide;
+  const glideCollection = collection(db, "glides");
+  const added = await addDoc(glideCollection, glide);
+  
+  return {...glide, id: added.id};
 }
 
 export { createGlide };

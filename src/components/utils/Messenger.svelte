@@ -25,7 +25,8 @@
     };
 
     try {
-      createGlide(glideData);
+      const glide = await createGlide(glideData);
+      console.log(glide);
       onGlidePosted(glideData);
       addSnackbar("Glide Created!", "success");
       form.content = "";
