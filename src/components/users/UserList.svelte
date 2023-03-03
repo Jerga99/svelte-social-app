@@ -3,7 +3,7 @@
   export let users;
 </script>
 
-{#each users as user (user.avatar)}
+{#each users as user (user.uid)}
   <div class="flex-it p-4">
     <div class="flex-it flex-row">
       <div class="flex-it mr-4">

@@ -1,14 +1,11 @@
 
 import { db } from "@db/index";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 
 async function fetchUsers() {
-  const users = [
-    {avatar: "https://thrangra.sirv.com/Avatar1.png", nickName: "Felipe"},
-    {avatar: "https://thrangra.sirv.com/Avatar2.png", nickName: "Anna"},
-  ]
-
-  return users;
+  const usersCollection = collection(db, "users");
+  const usersSnap = await getDocs(usersCollection);
+  return usersSnap.docs.map(doc => doc.data());
 }
 
 async function getUser(uid) {
