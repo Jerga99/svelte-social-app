@@ -1,10 +1,14 @@
 
 import { db } from "@db/index";
-import { doc, getDoc, collection, getDocs } from "firebase/firestore";
+import { doc, getDoc, collection, getDocs, query, where } from "firebase/firestore";
 
-async function fetchUsers() {
-  const usersCollection = collection(db, "users");
-  const usersSnap = await getDocs(usersCollection);
+async function fetchUsers(loggedInUser) {
+  const usersQuery = query(
+    collection(db, "users"),
+    where("uid", "!=", loggedInUser.uid)
+  );
+
+  const usersSnap = await getDocs(usersQuery);
   return usersSnap.docs.map(doc => doc.data());
 }
 
