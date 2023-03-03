@@ -16,6 +16,10 @@ export function createGlideStore() {
   async function loadGlides() {
     const _page = get(page);
 
+    if (_page > 1 && !lastGlideDoc) {
+      return;
+    }
+
     loading.set(true);
     try {
       const { glides, lastGlideDoc: _lastGlideDoc } = await fetchGlides(lastGlideDoc);

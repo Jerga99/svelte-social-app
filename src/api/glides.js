@@ -8,6 +8,8 @@ async function fetchGlides(lastGlideDoc) {
     limit(10)
   ];
 
+  console.log("Last Glide Doc: " + lastGlideDoc?.id);
+
   if (lastGlideDoc) {
     constraints.push(startAfter(lastGlideDoc));
   }

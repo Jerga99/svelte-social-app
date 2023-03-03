@@ -1,6 +1,5 @@
 <script>
   import PaginatedGlides from "@components/glides/PaginatedGlides.svelte";
-  import CenteredDataLoader from "@components/utils/CenteredDataLoader.svelte";
   import Messenger from "@components/utils/Messenger.svelte";
   import { createGlideStore } from "@stores/createGlideStore";
   
@@ -18,7 +17,4 @@
   loadMoreGlides={loadGlides}
 />
 
-{#if $loading}
-  <CenteredDataLoader />
-{/if}
 

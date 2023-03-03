@@ -1,5 +1,6 @@
 
 <script>
+  import CenteredDataLoader from "@components/utils/CenteredDataLoader.svelte";
   import GlidePost from "./GlidePost.svelte";
 
   export let pages;
@@ -23,6 +24,10 @@
       <GlidePost {glide}/>
   {/each}
 {/each}
+
+{#if loading}
+  <CenteredDataLoader />
+{/if}
 
 <div bind:this={lastItemRef}></div>
 <div class="h-96"></div>
