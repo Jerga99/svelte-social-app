@@ -1,12 +1,14 @@
 <script>
   import { getAuthContext } from "@components/context/auth";
+  import { pageStore } from "@stores/pageStore";
 
   const users = [
     {avatar: "https://thrangra.sirv.com/Avatar1.png", nickName: "Felipe"},
     {avatar: "https://thrangra.sirv.com/Avatar2.png", nickName: "Anna"},
   ]
   const {auth} = getAuthContext();
-  
+  pageStore.title.set("Profile"); 
+
 </script>
 
 <div class="flex-it py-1">
