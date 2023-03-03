@@ -3,12 +3,14 @@
   import GlidePost from "./GlidePost.svelte";
 
   export let pages;
+  export let loading;
+  export let loadMoreGlides;
 
   let lastItemRef;
 
   function loadNewGlides() {
-    if (lastItemRef.getBoundingClientRect().top <= window.innerHeight) {
-      console.log("Load more glides!");
+    if ((lastItemRef.getBoundingClientRect().top <= window.innerHeight) && !loading) {
+      loadMoreGlides();
     }
   }
 

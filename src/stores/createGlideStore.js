@@ -18,14 +18,14 @@ export function createGlideStore() {
 
     loading.set(true);
     try {
-      const { glides, lastGlideDoc: _lastGlideDoc } = await fetchGlides();
+      const { glides, lastGlideDoc: _lastGlideDoc } = await fetchGlides(lastGlideDoc);
 
       if (glides.length > 0) {
         pages.update(_pages => ({..._pages, [_page]: {glides}}));
+        page.update(_page => _page + 1);
       }
 
       lastGlideDoc = _lastGlideDoc;
-      console.log(lastGlideDoc);
     } catch(e) {
       console.log(e.message);
     } finally {
@@ -44,5 +44,6 @@ export function createGlideStore() {
     pages: { subscribe: pages.subscribe },
     loading: { subscribe: loading.subscribe },
     addGlide,
+    loadGlides
   }
 }
