@@ -1,28 +1,10 @@
 <script>
-  import { fetchUsers } from "@api/users";
   import { getAuthContext } from "@components/context/auth";
   import UserList from "@components/users/UserList.svelte";
   import { pageStore } from "@stores/pageStore";
-  import { onMount } from "svelte";
 
   const {auth} = getAuthContext();
   pageStore.title.set("Profile"); 
-
-  let users = [];
-  let loading = false;
-
-  onMount(loadUsers);
-
-  async function loadUsers() {
-    loading = true;
-    try {
-      users = await fetchUsers();
-    } catch(e) {
-      console.log(e.message);
-    } finally {
-      loading = false;
-    }
-  }
 
 </script>
 
@@ -48,5 +30,5 @@
       </div>
     </div>
   </div>
-  <UserList {users} />
+  <UserList />
 </div>
