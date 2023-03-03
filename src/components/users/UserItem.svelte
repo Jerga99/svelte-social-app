@@ -1,5 +1,9 @@
 
 <script>
+  import { createEventDispatcher } from "svelte";
+
+  const dispatch = createEventDispatcher();
+
   export let user;
 </script>
 
@@ -18,6 +22,9 @@
           </div>
           <div class="flex-it w-32 mt-3 cursor-pointer">
             <button
+              on:click={() => {
+                dispatch("followClick", user);
+              }}
               type="button"
               class="
                   disabled:cursor-not-allowed disabled:bg-gray-400

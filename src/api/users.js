@@ -2,6 +2,10 @@
 import { db } from "@db/index";
 import { doc, getDoc, collection, getDocs, query, where } from "firebase/firestore";
 
+async function followUser(followerUid, followingUid) {
+  console.log(`User with uid: ${followerUid}, should follow user with uid: ${followingUid}`);
+}
+
 async function fetchUsers(loggedInUser) {
   const usersQuery = query(
     collection(db, "users"),
@@ -18,4 +22,4 @@ async function getUser(uid) {
   return docSnap.data();
 }
 
-export { getUser, fetchUsers }
+export { getUser, fetchUsers, followUser }

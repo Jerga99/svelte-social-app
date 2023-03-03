@@ -1,6 +1,6 @@
 
 <script>
-  import { fetchUsers } from "@api/users";
+  import * as api from "@api/users";
   import { getAuthContext } from "@components/context/auth";
   import CenteredDataLoader from "@components/utils/CenteredDataLoader.svelte";
   import { onMount } from "svelte";
@@ -15,19 +15,27 @@
 
   async function loadUsers() {
     try {
-      users = await fetchUsers($auth.user);
+      users = await api.fetchUsers($auth.user);
     } catch(e) {
       console.log(e.message);
     } finally {
       loading = false;
     }
   }
+
+  function followUser(followingUser) {
+    api.followUser($auth.user.uid, followingUser.uid);
+  }
+
 </script>
 
 {#if loading}
   <CenteredDataLoader />
 {:else if users.length > 0}
   {#each users as user (user.uid)}
-    <UserItem {user} />
+    <UserItem
+      on:followClick={(e) => followUser(e.detail)} 
+      {user} 
+    />
   {/each}
 {/if}
