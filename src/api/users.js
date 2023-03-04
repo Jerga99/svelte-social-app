@@ -1,9 +1,22 @@
 
 import { db } from "@db/index";
-import { doc, getDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { doc, getDoc, collection, getDocs, query, where, updateDoc, increment, arrayUnion } from "firebase/firestore";
 
 async function followUser(followerUid, followingUid) {
-  console.log(`User with uid: ${followerUid}, should follow user with uid: ${followingUid}`);
+  const followerRef = doc(db, "users", followerUid);
+  const followingRef = doc(db, "users", followingUid);
+
+  await updateDoc(followerRef, {
+    following: arrayUnion(followingRef),
+    followingCount: increment(1)
+  });
+
+  await updateDoc(followingRef, {
+    followers: arrayUnion(followerRef),
+    followersCount: increment(1)
+  });
+  console.log("Update is done!");
+  return followingRef;
 }
 
 async function fetchUsers(loggedInUser) {
