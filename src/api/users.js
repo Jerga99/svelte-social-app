@@ -15,7 +15,7 @@ async function followUser(followerUid, followingUid) {
     followers: arrayUnion(followerRef),
     followersCount: increment(1)
   });
-  console.log("Update is done!");
+  
   return followingRef;
 }
 

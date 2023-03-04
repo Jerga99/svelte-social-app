@@ -29,18 +29,17 @@
   async function followUser(followingUser) {
     followingInProgress = true;
     try {
-      const followingRef = await api.followUser($auth.user.uid, followingUser.uid);
 
-      console.log("Before Update: ");
-      console.log(JSON.stringify($auth.user));
+      if ($auth.user.following.filter(following => following.id === followingUser.uid).length > 0) {
+        throw new Error("You already follow this user!");
+      }
+
+      const followingRef = await api.followUser($auth.user.uid, followingUser.uid);
 
       updateUser({
         followingCount: $auth.user.followingCount + 1,
         following: [followingRef, ...$auth.user.following]
       });
-
-      console.log("After Update: ");
-      console.log(JSON.stringify($auth.user));
 
       addSnackbar(`You started following ${followingUser.nickName}`, "success");
     } catch(e) {
