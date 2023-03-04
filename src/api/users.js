@@ -26,7 +26,12 @@ async function fetchUsers(loggedInUser) {
   );
 
   const usersSnap = await getDocs(usersQuery);
-  return usersSnap.docs.map(doc => doc.data());
+  return usersSnap.docs
+    .map(doc => doc.data())
+    .filter(user => {
+      const hasFollowing = loggedInUser.following.filter(following => following.id === user.uid).length > 0;
+      return !hasFollowing;
+    });
 }
 
 async function getUser(uid) {
