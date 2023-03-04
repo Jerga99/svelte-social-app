@@ -15,10 +15,14 @@
   });
 
   setContext(key, {
-    auth, isLoading
+    auth, isLoading, updateUser
   })
 
   onMount(listenToAuthChanges);
+
+  function updateUser(userData) {
+    auth.update(authState => ({...authState, user: {...authState.user, ...userData}}));
+  }
 
   function listenToAuthChanges() {
     onAuthStateChanged(firebaseAuth, async (user) => {

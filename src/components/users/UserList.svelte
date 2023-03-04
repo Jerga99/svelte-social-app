@@ -7,7 +7,7 @@
   import { onMount } from "svelte";
   import UserItem from "./UserItem.svelte";
 
-  const { auth } = getAuthContext();
+  const { auth, updateUser } = getAuthContext();
   const { addSnackbar } = getUIContext();
 
   let users = [];
@@ -29,7 +29,19 @@
   async function followUser(followingUser) {
     followingInProgress = true;
     try {
-      await api.followUser($auth.user.uid, followingUser.uid);
+      const followingRef = await api.followUser($auth.user.uid, followingUser.uid);
+
+      console.log("Before Update: ");
+      console.log(JSON.stringify($auth.user));
+
+      updateUser({
+        followingCount: $auth.user.followingCount + 1,
+        following: [followingRef, ...$auth.user.following]
+      });
+
+      console.log("After Update: ");
+      console.log(JSON.stringify($auth.user));
+
       addSnackbar(`You started following ${followingUser.nickName}`, "success");
     } catch(e) {
       addSnackbar(e.message, "error");
