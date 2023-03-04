@@ -5,6 +5,8 @@
   const dispatch = createEventDispatcher();
 
   export let user;
+  export let followingInProgress;
+
 </script>
 
 <div class="flex-it p-4">
@@ -25,6 +27,7 @@
               on:click={() => {
                 dispatch("followClick", user);
               }}
+              disabled={followingInProgress}
               type="button"
               class="
                   disabled:cursor-not-allowed disabled:bg-gray-400

@@ -2,14 +2,17 @@
 <script>
   import * as api from "@api/users";
   import { getAuthContext } from "@components/context/auth";
+  import { getUIContext } from "@components/context/UI";
   import CenteredDataLoader from "@components/utils/CenteredDataLoader.svelte";
   import { onMount } from "svelte";
   import UserItem from "./UserItem.svelte";
 
   const { auth } = getAuthContext();
+  const { addSnackbar } = getUIContext();
 
   let users = [];
   let loading = true;
+  let followingInProgress = false;
 
   onMount(loadUsers);
 
@@ -23,8 +26,16 @@
     }
   }
 
-  function followUser(followingUser) {
-    api.followUser($auth.user.uid, followingUser.uid);
+  async function followUser(followingUser) {
+    followingInProgress = true;
+    try {
+      await api.followUser($auth.user.uid, followingUser.uid);
+      addSnackbar(`You started following ${followingUser.nickName}`, "success");
+    } catch(e) {
+      addSnackbar(e.message, "error");
+    } finally {
+      followingInProgress = false;
+    }
   }
 
 </script>
@@ -36,6 +47,7 @@
     <UserItem
       on:followClick={(e) => followUser(e.detail)} 
       {user} 
+      {followingInProgress}
     />
   {/each}
 {/if}
