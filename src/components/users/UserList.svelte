@@ -41,6 +41,8 @@
         following: [followingRef, ...$auth.user.following]
       });
 
+      users = users.filter(user => user.uid !== followingUser.uid);
+
       addSnackbar(`You started following ${followingUser.nickName}`, "success");
     } catch(e) {
       addSnackbar(e.message, "error");
