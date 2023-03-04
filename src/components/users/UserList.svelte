@@ -63,4 +63,10 @@
       {followingInProgress}
     />
   {/each}
+{:else}
+  <div class="flex-it">
+    <div class="bg-yellow-500 mt-6 p-2 rounded-lg mx-4">
+      You follow all users in the world...
+    </div>
+  </div>
 {/if}
