@@ -24,7 +24,7 @@ function onGlidesSnapshot(loggedInUser, callback) {
 
   const q = query(watchCollection, ...constraints);
 
-  onSnapshot(q, async (qSnapshot) => {
+  return onSnapshot(q, async (qSnapshot) => {
     const glides = await getGlidesFromDocuments(qSnapshot);
     callback(glides);
   })

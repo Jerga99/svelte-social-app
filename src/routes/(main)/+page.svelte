@@ -5,19 +5,16 @@
   import Portal from "@components/utils/Portal.svelte";
   import { createGlideStore } from "@stores/createGlideStore";
   import { pageStore } from "@stores/pageStore";
-  import { onMount } from "svelte";
   
   const { auth } = getAuthContext();
   const { 
     pages, freshGlides, 
     loading, 
     addGlide, loadGlides,
-    subscribeToNewGlides, displayFreshGlides
+    displayFreshGlides
   } = createGlideStore($auth.user);
 
   pageStore.title.set("Home");
-
-  onMount(subscribeToNewGlides);
 
 </script>
 

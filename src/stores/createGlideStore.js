@@ -11,8 +11,16 @@ export function createGlideStore(loggedInUser) {
   const loading = writable(false);
 
   let lastGlideDoc;
+  let unsub;
 
-  onMount(loadGlides);
+  onMount(() => {
+    loadGlides();
+    subscribeToNewGlides();
+
+    return () => {
+      unsubscribeFromNewGlides();
+    }
+  });
 
   async function loadGlides() {
     const _page = get(page);
@@ -50,16 +58,26 @@ export function createGlideStore(loggedInUser) {
       return;
     }
 
-    onGlidesSnapshot(loggedInUser, (newGlides) => {
+    unsub = onGlidesSnapshot(loggedInUser, (newGlides) => {
       freshGlides.set(newGlides);
     });
+  }
+
+  function unsubscribeFromNewGlides() {
+    unsub && unsub();
+  }
+
+  function resubToGlides() {
+    unsubscribeFromNewGlides();
+    subscribeToNewGlides();
   }
 
   function displayFreshGlides() {
     get(freshGlides).forEach(freshGlide => {
       addGlide(freshGlide);
     });
-    console.log(get(freshGlides));
+    
+    resubToGlides();
     freshGlides.set([]);
   }
 
