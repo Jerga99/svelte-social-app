@@ -1,4 +1,4 @@
-import { fetchGlides } from "@api/glides";
+import { fetchGlides, onGlidesSnapshot } from "@api/glides";
 import { onMount } from "svelte";
 import { get, writable } from "svelte/store"
 
@@ -44,10 +44,19 @@ export function createGlideStore(loggedInUser) {
     })
   }
 
+  function subscribeToNewGlides() {
+    if (loggedInUser.following.length === 0) {
+      return;
+    }
+
+    onGlidesSnapshot(loggedInUser);
+  }
+
   return {
     pages: { subscribe: pages.subscribe },
     loading: { subscribe: loading.subscribe },
     addGlide,
-    loadGlides
+    loadGlides,
+    subscribeToNewGlides
   }
 }

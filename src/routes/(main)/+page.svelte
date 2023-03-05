@@ -4,11 +4,14 @@
   import Messenger from "@components/utils/Messenger.svelte";
   import { createGlideStore } from "@stores/createGlideStore";
   import { pageStore } from "@stores/pageStore";
+  import { onMount } from "svelte";
   
   const { auth } = getAuthContext();
-  const { pages, loading, addGlide, loadGlides } = createGlideStore($auth.user);
+  const { pages, loading, addGlide, loadGlides, subscribeToNewGlides } = createGlideStore($auth.user);
 
   pageStore.title.set("Home");
+
+  onMount(subscribeToNewGlides);
   
 </script>
 

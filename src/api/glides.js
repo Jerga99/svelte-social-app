@@ -1,6 +1,22 @@
 
 import { db } from "@db/index";
-import { Timestamp, doc, collection, getDocs, getDoc, query, addDoc, orderBy, limit, startAfter, where } from "firebase/firestore"
+import { onSnapshot, Timestamp, doc, collection, getDocs, getDoc, query, addDoc, orderBy, limit, startAfter, where } from "firebase/firestore"
+
+
+function onGlidesSnapshot(loggedInUser) {
+  const watchCollection = collection(db, "glides");
+
+  const constraints = [
+    where("date", ">", Timestamp.now()),
+    where("user", "in", loggedInUser.following)
+  ];
+
+  const q = query(watchCollection, ...constraints);
+
+  onSnapshot(q, (querySnapshot) => {
+    console.log(querySnapshot.docs);
+  })
+}
 
 async function fetchGlides(lastGlideDoc, loggedInUser) {
   const _loggedInUserRef = doc(db, "users", loggedInUser.uid);
@@ -53,4 +69,4 @@ async function createGlide(glideData) {
   return {...glide, id: added.id};
 }
 
-export { createGlide, fetchGlides };
+export { createGlide, fetchGlides, onGlidesSnapshot };
