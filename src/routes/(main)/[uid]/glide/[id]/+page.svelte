@@ -1,0 +1,3 @@
+
+
+Hello Glide Detail Page!
