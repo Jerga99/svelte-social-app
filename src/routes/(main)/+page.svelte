@@ -7,11 +7,15 @@
   import { onMount } from "svelte";
   
   const { auth } = getAuthContext();
-  const { pages, loading, addGlide, loadGlides, subscribeToNewGlides } = createGlideStore($auth.user);
+  const { pages, freshGlides, loading, addGlide, loadGlides, subscribeToNewGlides } = createGlideStore($auth.user);
 
   pageStore.title.set("Home");
 
   onMount(subscribeToNewGlides);
+
+  $: {
+    console.log($freshGlides);
+  }
   
 </script>
 

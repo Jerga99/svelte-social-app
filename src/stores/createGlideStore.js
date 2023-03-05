@@ -7,6 +7,7 @@ const FIRST_PAGE = 1;
 export function createGlideStore(loggedInUser) {
   const pages = writable({[FIRST_PAGE]: {glides: []}});
   const page = writable(FIRST_PAGE);
+  const freshGlides = writable([]);
   const loading = writable(false);
 
   let lastGlideDoc;
@@ -49,12 +50,15 @@ export function createGlideStore(loggedInUser) {
       return;
     }
 
-    onGlidesSnapshot(loggedInUser);
+    onGlidesSnapshot(loggedInUser, (newGlides) => {
+      freshGlides.set(newGlides);
+    });
   }
 
   return {
     pages: { subscribe: pages.subscribe },
     loading: { subscribe: loading.subscribe },
+    freshGlides: { subscribe: freshGlides.subscribe },
     addGlide,
     loadGlides,
     subscribeToNewGlides
