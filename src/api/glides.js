@@ -13,8 +13,16 @@ function onGlidesSnapshot(loggedInUser) {
 
   const q = query(watchCollection, ...constraints);
 
-  onSnapshot(q, (querySnapshot) => {
-    console.log(querySnapshot.docs);
+  onSnapshot(q, async (qSnapshot) => {
+    const glides = await Promise.all(qSnapshot.docs.reverse().map(async doc => {
+      const glide = doc.data();
+      const userSnapshot = await getDoc(glide.user);
+      glide.user = userSnapshot.data();
+  
+      return {...glide, id: doc.id};
+    }));
+
+    console.log(glides);
   })
 }
 
