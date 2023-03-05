@@ -8,7 +8,12 @@
   import { onMount } from "svelte";
   
   const { auth } = getAuthContext();
-  const { pages, freshGlides, loading, addGlide, loadGlides, subscribeToNewGlides } = createGlideStore($auth.user);
+  const { 
+    pages, freshGlides, 
+    loading, 
+    addGlide, loadGlides,
+    subscribeToNewGlides, displayFreshGlides
+  } = createGlideStore($auth.user);
 
   pageStore.title.set("Home");
 
@@ -25,6 +30,7 @@
   <Portal>
     <div class="fixed top-2 z-100 left-2/4 -translate-x-1/2">
       <button
+        on:click={displayFreshGlides}
         type="button"
         class="
 				disabled:cursor-not-allowed disabled:bg-gray-400

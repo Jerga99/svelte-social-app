@@ -55,12 +55,21 @@ export function createGlideStore(loggedInUser) {
     });
   }
 
+  function displayFreshGlides() {
+    get(freshGlides).forEach(freshGlide => {
+      addGlide(freshGlide);
+    });
+    console.log(get(freshGlides));
+    freshGlides.set([]);
+  }
+
   return {
     pages: { subscribe: pages.subscribe },
     loading: { subscribe: loading.subscribe },
     freshGlides: { subscribe: freshGlides.subscribe },
     addGlide,
     loadGlides,
-    subscribeToNewGlides
+    subscribeToNewGlides,
+    displayFreshGlides
   }
 }
