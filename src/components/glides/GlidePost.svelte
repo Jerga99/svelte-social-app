@@ -24,7 +24,7 @@
       <div class="flex-it justify-center flex-grow mb-1">
         <div class="flex-it justify-between flex-row w-full">
           <div>
-            <span class="font-bold">{glide.user.nickName}</span>
+            <span class="font-bold">{glide.user.nickName} - {glide.lookup}</span>
             <span class="mx-2">&#8226;</span>
             <span class="text-gray-400">
               {moment(glide.date.toDate().toISOString()).fromNow()}

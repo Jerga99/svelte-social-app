@@ -9,7 +9,7 @@ async function getGlidesFromDocuments(qSnapshot) {
     const userSnapshot = await getDoc(glide.user);
     glide.user = userSnapshot.data();
 
-    return {...glide, id: doc.id};
+    return {...glide, id: doc.id, lookup: doc.ref.path};
   }));
 }
 
