@@ -30,6 +30,16 @@ function onGlidesSnapshot(loggedInUser, callback) {
   })
 }
 
+async function fetchGlide(uid, id) {
+  const userDocRef = doc(db, "users", uid);
+  const userGlideRef = doc(userDocRef, "glides", id);
+
+  const userGlideSnap = await getDoc(userGlideRef);
+  const userGlide = userGlideSnap.data();
+
+  console.log(userGlide.lookup);
+}
+
 async function fetchGlides(lastGlideDoc, loggedInUser) {
   const _loggedInUserRef = doc(db, "users", loggedInUser.uid);
 
@@ -78,4 +88,4 @@ async function createGlide(glideData) {
   return {...glide, id: added.id, lookup: added.path};
 }
 
-export { createGlide, fetchGlides, onGlidesSnapshot };
+export { createGlide, fetchGlides, onGlidesSnapshot, fetchGlide };

@@ -1,9 +1,13 @@
 
 <script>
   import { page } from "$app/stores";
-</script>
+  import { fetchGlide } from "@api/glides";
+  import { onMount } from "svelte";
 
-Hello Glide Detail Page!
+  onMount(() => {
+    fetchGlide($page.params.uid, $page.params.id);
+  })
+</script>
 
 <div>
   uid: {$page.params.uid}
