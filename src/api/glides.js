@@ -3,6 +3,17 @@ import { db } from "@db/index";
 import { onSnapshot, Timestamp, doc, collection, getDocs, getDoc, query, addDoc, orderBy, limit, startAfter, where } from "firebase/firestore"
 
 
+async function getGlidesFromDocuments(qSnapshot) {
+  return await Promise.all(qSnapshot.docs.map(async doc => {
+    const glide = doc.data();
+    const userSnapshot = await getDoc(glide.user);
+    glide.user = userSnapshot.data();
+
+    return {...glide, id: doc.id};
+  }));
+}
+
+
 function onGlidesSnapshot(loggedInUser) {
   const watchCollection = collection(db, "glides");
 
@@ -14,13 +25,7 @@ function onGlidesSnapshot(loggedInUser) {
   const q = query(watchCollection, ...constraints);
 
   onSnapshot(q, async (qSnapshot) => {
-    const glides = await Promise.all(qSnapshot.docs.reverse().map(async doc => {
-      const glide = doc.data();
-      const userSnapshot = await getDoc(glide.user);
-      glide.user = userSnapshot.data();
-  
-      return {...glide, id: doc.id};
-    }));
+    const glides = await getGlidesFromDocuments(qSnapshot);
 
     console.log(glides);
   })
@@ -49,13 +54,7 @@ async function fetchGlides(lastGlideDoc, loggedInUser) {
 
   const _lastGlideDoc = qSnapshot.docs[qSnapshot.docs.length - 1];
   
-  const glides = await Promise.all(qSnapshot.docs.map(async doc => {
-    const glide = doc.data();
-    const userSnapshot = await getDoc(glide.user);
-    glide.user = userSnapshot.data();
-
-    return {...glide, id: doc.id};
-  }));
+  const glides = await getGlidesFromDocuments(qSnapshot);
 
   return {glides, lastGlideDoc: _lastGlideDoc};
 }
