@@ -1,14 +1,20 @@
 
 import { db } from "@db/index";
-import { Timestamp, doc, collection, getDocs, getDoc, query, addDoc, orderBy, limit, startAfter } from "firebase/firestore"
+import { Timestamp, doc, collection, getDocs, getDoc, query, addDoc, orderBy, limit, startAfter, where } from "firebase/firestore"
 
-async function fetchGlides(lastGlideDoc) {
+async function fetchGlides(lastGlideDoc, loggedInUser) {
+  const _loggedInUserRef = doc(db, "users", loggedInUser.uid);
+
   const constraints = [
     orderBy("date", "desc"),
     limit(10)
   ];
 
-  console.log("Last Glide Doc: " + lastGlideDoc?.id);
+  if (loggedInUser.following.length > 0) {
+    constraints.push(where("user", "in", [...loggedInUser.following, _loggedInUserRef]));
+  } else {
+    constraints.push(where("user", "==", _loggedInUserRef));
+  }
 
   if (lastGlideDoc) {
     constraints.push(startAfter(lastGlideDoc));

@@ -4,7 +4,7 @@ import { get, writable } from "svelte/store"
 
 const FIRST_PAGE = 1;
 
-export function createGlideStore() {
+export function createGlideStore(loggedInUser) {
   const pages = writable({[FIRST_PAGE]: {glides: []}});
   const page = writable(FIRST_PAGE);
   const loading = writable(false);
@@ -22,7 +22,7 @@ export function createGlideStore() {
 
     loading.set(true);
     try {
-      const { glides, lastGlideDoc: _lastGlideDoc } = await fetchGlides(lastGlideDoc);
+      const { glides, lastGlideDoc: _lastGlideDoc } = await fetchGlides(lastGlideDoc, loggedInUser);
 
       if (glides.length > 0) {
         pages.update(_pages => ({..._pages, [_page]: {glides}}));

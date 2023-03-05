@@ -1,10 +1,13 @@
 <script>
+  import { getAuthContext } from "@components/context/auth";
   import PaginatedGlides from "@components/glides/PaginatedGlides.svelte";
   import Messenger from "@components/utils/Messenger.svelte";
   import { createGlideStore } from "@stores/createGlideStore";
   import { pageStore } from "@stores/pageStore";
   
-  const { pages, loading, addGlide, loadGlides } = createGlideStore();
+  const { auth } = getAuthContext();
+  const { pages, loading, addGlide, loadGlides } = createGlideStore($auth.user);
+
   pageStore.title.set("Home");
   
 </script>
