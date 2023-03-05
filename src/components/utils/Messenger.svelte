@@ -39,6 +39,13 @@
       loading = false;
     }
   }
+
+  function autosize(e) {
+    const el = e.target;
+    el.style.height = "0px";
+    const {scrollHeight} = el;
+    el.style.height = scrollHeight + "px";
+  }
   
 </script>
 
@@ -58,6 +65,7 @@
     <div class="flex-it">
       <textarea
         bind:value={form.content}
+        on:input={autosize}
         name="content"
         rows="1"
         id="glide"
