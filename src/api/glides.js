@@ -60,14 +60,19 @@ async function fetchSubglides(lastGlideDoc, glideLookup) {
     limit(10)
   ];
 
-  const q = query(glidesCollection, ...constraints);
+  if (lastGlideDoc) {
+    constraints.push(startAfter(lastGlideDoc));
+  }
 
+  const q = query(glidesCollection, ...constraints);
   const qSnapshot = await getDocs(q);
+
+  const _lastGlideDoc = qSnapshot.docs[qSnapshot.docs.length - 1];
   const glides = await getGlidesFromDocuments(qSnapshot);
 
   return {
     glides,
-    lastGlide: null
+    lastGlideDoc: _lastGlideDoc
   }
 }
 

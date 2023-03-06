@@ -63,6 +63,8 @@
   <PaginatedGlides
     pages={$pages}
     loading={$loadingSubglides}
-    loadMoreGlides={() => {}}
+    loadMoreGlides={() => {
+      loadGlides($glide.lookup);
+    }}
   />
 {/if}
