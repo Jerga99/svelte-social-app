@@ -1,5 +1,5 @@
 <script>
-  import { createGlide } from "@api/glides";
+  import { createGlide, uploadImage } from "@api/glides";
   import { getAuthContext } from "@components/context/auth";
   import { getUIContext } from "@components/context/UI";
   import TiImageOutline from "svelte-icons/ti/TiImageOutline.svelte";
@@ -26,6 +26,12 @@
       ...form,
       uid: user.uid
     };
+
+    if (image.buffer.byteLength > 0) {
+      uploadImage(image);
+    }
+
+    return;
 
     try {
       const glide = await createGlide(glideData, glideLookup);

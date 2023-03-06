@@ -13,6 +13,10 @@ async function getGlidesFromDocuments(qSnapshot) {
   }));
 }
 
+function uploadImage(image) {
+  console.log("Should upload image!");
+  console.log(image);
+}
 
 function onGlidesSnapshot(loggedInUser, callback) {
   const watchCollection = collection(db, "glides");
@@ -143,4 +147,11 @@ async function createGlide(glideData, glideLookup) {
   return {...glide, id: added.id, lookup: added.path};
 }
 
-export { createGlide, fetchGlides, onGlidesSnapshot, fetchGlide, fetchSubglides };
+export { 
+  createGlide, 
+  fetchGlides, 
+  onGlidesSnapshot, 
+  fetchGlide, 
+  fetchSubglides,
+  uploadImage
+};
