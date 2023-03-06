@@ -1,6 +1,6 @@
 
 import { db } from "@db/index";
-import { onSnapshot, Timestamp, doc, collection, getDocs, getDoc, query, addDoc, orderBy, limit, startAfter, where, setDoc } from "firebase/firestore"
+import { onSnapshot, Timestamp, doc, collection, getDocs, getDoc, query, addDoc, orderBy, limit, startAfter, where, setDoc, updateDoc, increment } from "firebase/firestore"
 
 
 async function getGlidesFromDocuments(qSnapshot) {
@@ -124,6 +124,13 @@ async function createGlide(glideData, glideLookup) {
 
   const glideCollection = getGlideCollection(glideLookup);
   const added = await addDoc(glideCollection, glide);
+
+  if (glideLookup) {
+    const ref = doc(db, glideLookup);
+    await updateDoc(ref, {
+      subglidesCount: increment(1)
+    })
+  }
 
   const userGlideRef = doc(userRef, "glides", added.id);
   await setDoc(userGlideRef, {lookup: added})
