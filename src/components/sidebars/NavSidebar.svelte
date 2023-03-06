@@ -50,7 +50,10 @@
             </nav>
           </div>
 
-          <Modal let:openModal={openModal}>
+          <Modal 
+            let:openModal={openModal}
+            let:closeModal={closeModal}
+          >
             <button 
               slot="opener" 
               on:click|stopPropagation={openModal}
@@ -75,6 +78,7 @@
                 glideLookup={$activeGlide?.lookup}
                 onGlidePosted={(glide) => {
                   $onGlidePosted(glide);
+                  closeModal();
                 }}
               />
             </div> 
