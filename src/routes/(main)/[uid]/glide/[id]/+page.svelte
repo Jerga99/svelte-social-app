@@ -15,8 +15,10 @@
   const { 
     glide, loading, 
     getGlide, incrementSubglidesCount 
-  } = createGlideIdStore(() => {
-    return fetchGlide($page.params.uid, $page.params.id);
+  } = createGlideIdStore(async () => {
+    const _glide = await fetchGlide($page.params.uid, $page.params.id);
+    onGlideLoaded(_glide);
+    return _glide;
   });
 
   const { 
@@ -36,6 +38,11 @@
     const _glide = await getGlide();
     loadGlides(_glide.lookup);
   });
+
+  function onGlideLoaded(glide) {
+    console.log("Reset pagination!");
+    console.log("Refetch subglides!");
+  }
 
 </script>
 
