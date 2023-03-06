@@ -3,6 +3,19 @@
   import Portal from "./Portal.svelte";
 
   let isOpen = false;
+
+  $: {
+    isOpen ? disableScroll() : enableScroll();
+  }
+
+  function enableScroll() {
+    document.body.classList.remove("no-scroll");
+  }
+
+  function disableScroll() {
+    document.body.classList.add("no-scroll");
+  }
+  
 </script>
 
 <slot name="opener" openModal={() => isOpen = true} />

@@ -6,6 +6,7 @@
   import { navLinks } from "./navLinks";
   import { getAuthContext } from "@components/context/auth";
   import Modal from "@components/utils/Modal.svelte";
+  import Messenger from "@components/utils/Messenger.svelte";
 
   const { isXl } = getUIContext();
   const { auth } = getAuthContext();
@@ -67,8 +68,8 @@
                 </div>
               </div>
             </button>
-            <div slot="modal-content" class="text-white">
-              Some modal content!
+            <div slot="modal-content">
+              <Messenger />
             </div> 
           </Modal>
         </div>
