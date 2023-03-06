@@ -50,7 +50,7 @@
           <Modal let:openModal={openModal}>
             <button 
               slot="opener" 
-              on:click={openModal}
+              on:click|stopPropagation={openModal}
               class="my-1 flex-it w-10/12 cursor-pointer"
             >
               <div
