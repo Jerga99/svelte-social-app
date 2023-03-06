@@ -7,9 +7,21 @@
   import { createGlideIdStore } from "@stores/createGlideIdStore";
   import { pageStore } from "@stores/pageStore";
   import BackButton from "@components/utils/BackButton.svelte";
+  import { createSubglideStore } from "@stores/createSubglideStore";
+  import { onMount } from "svelte";
   
   const { glide, loading } = createGlideIdStore($page.params.uid, $page.params.id);
+  const { pages, loadGlides} = createSubglideStore();
+
   pageStore.title.set(BackButton);
+
+  onMount(() => {
+    loadGlides();
+  });
+
+  $: {
+    console.log($pages);
+  }
 
 </script>
 

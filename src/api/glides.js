@@ -50,6 +50,15 @@ async function fetchGlide(uid, id) {
   return glide;
 }
 
+async function fetchSubglides() {
+  console.log("Fetching subglides!");
+
+  return {
+    glides: [],
+    lastGlide: null
+  }
+}
+
 async function fetchGlides(lastGlideDoc, loggedInUser) {
   const _loggedInUserRef = doc(db, "users", loggedInUser.uid);
 
@@ -98,4 +107,4 @@ async function createGlide(glideData) {
   return {...glide, id: added.id, lookup: added.path};
 }
 
-export { createGlide, fetchGlides, onGlidesSnapshot, fetchGlide };
+export { createGlide, fetchGlides, onGlidesSnapshot, fetchGlide, fetchSubglides };
