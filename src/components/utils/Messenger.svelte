@@ -30,10 +30,8 @@
     try {
       if (image.buffer.byteLength > 0) {
         const downloadUrl = await uploadImage(image);
-        console.log("Uploaded! " + downloadUrl);
+        glideData.mediaUrl = downloadUrl;
       }
-
-      return;
 
       const glide = await createGlide(glideData, glideLookup);
       const userData = {
@@ -43,6 +41,7 @@
       onGlidePosted({...glide, user: userData });
       addSnackbar("Glide Created!", "success");
       form.content = "";
+      image = {buffer: new ArrayBuffer(0), name: "", previewUrl: ""};
     } catch(e) {
       addSnackbar(e.message, "error");
     } finally {
