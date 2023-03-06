@@ -9,9 +9,10 @@
   import BackButton from "@components/utils/BackButton.svelte";
   import { createSubglideStore } from "@stores/createSubglideStore";
   import { onMount } from "svelte";
+  import PaginatedGlides from "@components/glides/PaginatedGlides.svelte";
   
   const { glide, loading, getGlide } = createGlideIdStore($page.params.uid, $page.params.id);
-  const { pages, loadGlides} = createSubglideStore();
+  const { pages, loading: loadingSubglides, loadGlides} = createSubglideStore();
 
   pageStore.title.set(BackButton);
 
@@ -40,4 +41,9 @@
       onGlidePosted={() => {}} 
     />
   </div>
+  <PaginatedGlides
+    pages={$pages}
+    loading={$loadingSubglides}
+    loadMoreGlides={() => {}}
+  />
 {/if}
