@@ -9,6 +9,7 @@
 
   export let onGlidePosted;
   export let showAvatar = true;
+  export let glideLookup = null;
 
   let form = { content: "" };
   let loading = false;
@@ -26,7 +27,7 @@
     };
 
     try {
-      const glide = await createGlide(glideData);
+      const glide = await createGlide(glideData, glideLookup);
       const userData = {
         nickName: user.nickName,
         avatar: user.avatar

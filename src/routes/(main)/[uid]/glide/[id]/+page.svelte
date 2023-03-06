@@ -33,6 +33,10 @@
     <div class="text-sm italic text-gray-300 underline mb-2">
       Answering to: {$glide.user.nickName}
     </div>
-    <Messenger showAvatar={false} onGlidePosted={() => {}} />
+    <Messenger 
+      glideLookup={$glide.lookup}
+      showAvatar={false} 
+      onGlidePosted={() => {}} 
+    />
   </div>
 {/if}

@@ -87,7 +87,10 @@ async function fetchGlides(lastGlideDoc, loggedInUser) {
   return {glides, lastGlideDoc: _lastGlideDoc};
 }
 
-async function createGlide(glideData) {
+async function createGlide(glideData, glideLookup) {
+
+  console.log("Glide should be added to: " + glideLookup);
+
   const userRef = doc(db, "users", glideData.uid);
 
   const glide = {
