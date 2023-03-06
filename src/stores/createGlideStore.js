@@ -10,7 +10,7 @@ export function createGlideStore(loggedInUser) {
   const freshGlides = writable([]);
   const loading = writable(false);
 
-  let lastGlideDoc;
+  let lastGlideDoc = null;
   let unsub;
 
   onMount(() => {
@@ -25,7 +25,7 @@ export function createGlideStore(loggedInUser) {
   async function loadGlides() {
     const _page = get(page);
 
-    if (_page > 1 && !lastGlideDoc) {
+    if (typeof lastGlideDoc === "undefined") {
       return;
     }
 

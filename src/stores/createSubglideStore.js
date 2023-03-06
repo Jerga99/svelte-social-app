@@ -8,12 +8,12 @@ export function createSubglideStore() {
   const page = writable(FIRST_PAGE);
   const loading = writable(false);
 
-  let lastGlideDoc;
+  let lastGlideDoc = null;
   
   async function loadGlides(glideLookup) {
     const _page = get(page);
 
-    if (_page > 1 && !lastGlideDoc) {
+    if (typeof lastGlideDoc === "undefined") {
       return;
     }
 
