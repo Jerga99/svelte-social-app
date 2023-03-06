@@ -51,9 +51,22 @@ async function fetchGlide(uid, id) {
 }
 
 async function fetchSubglides(lastGlideDoc, glideLookup) {
-  console.log("Fetching subglides for: " + glideLookup);
+  
+  const ref = doc(db, glideLookup);
+  const glidesCollection = collection(ref, "glides");
+
+  const constraints = [
+    orderBy("date", "desc"),
+    limit(10)
+  ];
+
+  const q = query(glidesCollection, ...constraints);
+
+  const qSnapshot = await getDocs(q);
+  const glides = await getGlidesFromDocuments(qSnapshot);
+
   return {
-    glides: [],
+    glides,
     lastGlide: null
   }
 }
