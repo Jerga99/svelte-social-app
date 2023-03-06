@@ -5,8 +5,11 @@
   import CenteredDataLoader from "@components/utils/CenteredDataLoader.svelte";
   import Messenger from "@components/utils/Messenger.svelte";
   import { createGlideIdStore } from "@stores/createGlideIdStore";
+  import { pageStore } from "@stores/pageStore";
+  import BackButton from "@components/utils/BackButton.svelte";
   
   const { glide, loading } = createGlideIdStore($page.params.uid, $page.params.id);
+  pageStore.title.set(BackButton);
 
 </script>
 

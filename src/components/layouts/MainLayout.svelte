@@ -20,7 +20,11 @@
                 <div
                   class="flex-it h-14 p-4 xl:text-xl text-sm font-bold z-10 backdrop-blur-md bg-opacity-70"
                 >
+                {#if typeof $title === "string"}
                   {$title}
+                {:else}
+                  <svelte:component this={$title} />
+                {/if}
                 </div>
               </div>
               <slot />
