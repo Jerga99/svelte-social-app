@@ -48,9 +48,13 @@
           </div>
 
           <Modal>
-            <div class="text-white">
+            <div slot="modal-content" class="text-white">
               Some modal content!
             </div> 
+
+            <div slot="modal-content-2" class="text-blue-300">
+              Some other content!
+            </div>
           </Modal>
 
           <!-- GLIDER SEND-MESSAGE BUTTON -->
