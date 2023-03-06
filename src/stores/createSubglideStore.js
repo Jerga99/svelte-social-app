@@ -34,9 +34,16 @@ export function createSubglideStore() {
     }
   }
 
+  function addGlide(glide) {
+    pages.update(_pages => {
+      _pages[FIRST_PAGE].glides.unshift(glide);
+      return _pages;
+    })
+  }
+
   return {
     pages: { subscribe: pages.subscribe },
     loading: { subscribe: loading.subscribe },
-    loadGlides,
+    loadGlides, addGlide
   }
 }

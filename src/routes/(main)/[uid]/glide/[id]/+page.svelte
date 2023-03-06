@@ -11,8 +11,15 @@
   import { onMount } from "svelte";
   import PaginatedGlides from "@components/glides/PaginatedGlides.svelte";
   
-  const { glide, loading, getGlide, incrementSubglidesCount } = createGlideIdStore($page.params.uid, $page.params.id);
-  const { pages, loading: loadingSubglides, loadGlides} = createSubglideStore();
+  const { 
+    glide, loading, 
+    getGlide, incrementSubglidesCount 
+  } = createGlideIdStore($page.params.uid, $page.params.id);
+
+  const { 
+    pages, loading: loadingSubglides, 
+    loadGlides, addGlide 
+  } = createSubglideStore();
 
   pageStore.title.set(BackButton);
 
@@ -38,7 +45,8 @@
     <Messenger 
       glideLookup={$glide.lookup}
       showAvatar={false} 
-      onGlidePosted={() => {
+      onGlidePosted={(glide) => {
+        addGlide(glide);
         incrementSubglidesCount();
       }} 
     />
