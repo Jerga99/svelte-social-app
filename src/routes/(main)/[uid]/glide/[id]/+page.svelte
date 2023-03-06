@@ -23,14 +23,16 @@
 
   pageStore.title.set(BackButton);
 
+  $: {
+    if ($glide && !$loading && $page.params.id !== $glide.id) {
+      console.log("Should reload the page!!!!!!!!");
+    }
+  }
+
   onMount(async () => {
     const _glide = await getGlide();
     loadGlides(_glide.lookup);
   });
-
-  $: {
-    console.log($pages);
-  }
 
 </script>
 
