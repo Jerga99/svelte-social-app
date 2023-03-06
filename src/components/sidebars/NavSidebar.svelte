@@ -11,7 +11,7 @@
 
   const { isXl } = getUIContext();
   const { auth } = getAuthContext();
-  const { activeGlide} = pageStore;
+  const { activeGlide, onGlidePosted } = pageStore;
 
   $: user = $auth?.user;
 
@@ -73,8 +73,8 @@
             <div slot="modal-content">
               <Messenger 
                 glideLookup={$activeGlide?.lookup}
-                onGlidePosted={() => {
-                  console.log("Do something when glide is posted from modal!");
+                onGlidePosted={(glide) => {
+                  $onGlidePosted(glide);
                 }}
               />
             </div> 

@@ -27,6 +27,7 @@
   } = createSubglideStore();
 
   pageStore.title.set(BackButton);
+  pageStore.onGlidePosted.set(addGlide);
 
   $: {
     if ($glide && !$loading && $page.params.id !== $glide.id) {
