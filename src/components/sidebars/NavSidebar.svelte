@@ -5,6 +5,7 @@
   import TiBrush from "svelte-icons/ti/TiBrush.svelte";
   import { navLinks } from "./navLinks";
   import { getAuthContext } from "@components/context/auth";
+  import Modal from "@components/utils/Modal.svelte";
 
   const { isXl } = getUIContext();
   const { auth } = getAuthContext();
@@ -45,6 +46,13 @@
               {/each}
             </nav>
           </div>
+
+          <Modal>
+            <div class="text-white">
+              Some modal content!
+            </div> 
+          </Modal>
+
           <!-- GLIDER SEND-MESSAGE BUTTON -->
           <div class="my-1 flex-it w-10/12 cursor-pointer">
             <div
