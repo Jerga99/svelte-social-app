@@ -8,6 +8,7 @@
   const { addSnackbar } = getUIContext();
 
   export let onGlidePosted;
+  export let showAvatar = true;
 
   let form = { content: "" };
   let loading = false;
@@ -50,17 +51,19 @@
 </script>
 
 <div class="flex-it py-1 px-4 flex-row">
-  <div class="flex-it mr-4">
-    <div
-      class="w-12 h-12 overflow-visible cursor-pointer transition duration-200 hover:opacity-80"
-    >
-      <img
-        alt=""
-        class="rounded-full"
-        src={user?.avatar}
-      />
+  {#if showAvatar}
+    <div class="flex-it mr-4">
+      <div
+        class="w-12 h-12 overflow-visible cursor-pointer transition duration-200 hover:opacity-80"
+      >
+        <img
+          alt=""
+          class="rounded-full"
+          src={user?.avatar}
+        />
+      </div>
     </div>
-  </div>
+  {/if}
   <div class="flex-it flex-grow">
     <div class="flex-it">
       <textarea
