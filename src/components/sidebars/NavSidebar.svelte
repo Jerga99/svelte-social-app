@@ -47,8 +47,12 @@
             </nav>
           </div>
 
-          <Modal>
-            <div slot="opener" class="my-1 flex-it w-10/12 cursor-pointer">
+          <Modal let:openModal={openModal}>
+            <button 
+              slot="opener" 
+              on:click={openModal}
+              class="my-1 flex-it w-10/12 cursor-pointer"
+            >
               <div
                 class="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-full flex-it transition"
               >
@@ -62,7 +66,7 @@
                   {/if}
                 </div>
               </div>
-            </div>
+            </button>
             <div slot="modal-content" class="text-white">
               Some modal content!
             </div> 

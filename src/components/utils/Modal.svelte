@@ -4,7 +4,7 @@
   let isOpen = false;
 </script>
 
-<slot name="opener" />
+<slot name="opener" openModal={() => isOpen = true} />
 {#if isOpen}
   <Portal>
     <div class="openModal">
