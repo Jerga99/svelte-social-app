@@ -1,6 +1,7 @@
 
 import { db } from "@db/index";
 import { onSnapshot, Timestamp, doc, collection, getDocs, getDoc, query, addDoc, orderBy, limit, startAfter, where, setDoc, updateDoc, increment } from "firebase/firestore"
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 
 async function getGlidesFromDocuments(qSnapshot) {
@@ -13,9 +14,13 @@ async function getGlidesFromDocuments(qSnapshot) {
   }));
 }
 
-function uploadImage(image) {
-  console.log("Should upload image!");
-  console.log(image);
+async function uploadImage(image) {
+  const storage = getStorage();
+  const storageRef = ref(storage, image.name);
+
+  const uploadResult = await uploadBytes(storageRef, image.buffer);
+  const downloadUrl = await getDownloadURL(uploadResult.ref);
+  return downloadUrl;
 }
 
 function onGlidesSnapshot(loggedInUser, callback) {

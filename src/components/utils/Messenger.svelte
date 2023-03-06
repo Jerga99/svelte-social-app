@@ -27,13 +27,14 @@
       uid: user.uid
     };
 
-    if (image.buffer.byteLength > 0) {
-      uploadImage(image);
-    }
-
-    return;
-
     try {
+      if (image.buffer.byteLength > 0) {
+        const downloadUrl = await uploadImage(image);
+        console.log("Uploaded! " + downloadUrl);
+      }
+
+      return;
+
       const glide = await createGlide(glideData, glideLookup);
       const userData = {
         nickName: user.nickName,
