@@ -10,7 +10,7 @@ export function createSubglideStore() {
 
   let lastGlideDoc;
   
-  async function loadGlides() {
+  async function loadGlides(glideLookup) {
     const _page = get(page);
 
     if (_page > 1 && !lastGlideDoc) {
@@ -19,7 +19,7 @@ export function createSubglideStore() {
 
     loading.set(true);
     try {
-      const { glides, lastGlideDoc: _lastGlideDoc } = await fetchSubglides(lastGlideDoc);
+      const { glides, lastGlideDoc: _lastGlideDoc } = await fetchSubglides(lastGlideDoc, glideLookup);
 
       if (glides.length > 0) {
         pages.update(_pages => ({..._pages, [_page]: {glides}}));

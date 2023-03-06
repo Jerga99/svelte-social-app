@@ -10,13 +10,14 @@
   import { createSubglideStore } from "@stores/createSubglideStore";
   import { onMount } from "svelte";
   
-  const { glide, loading } = createGlideIdStore($page.params.uid, $page.params.id);
+  const { glide, loading, getGlide } = createGlideIdStore($page.params.uid, $page.params.id);
   const { pages, loadGlides} = createSubglideStore();
 
   pageStore.title.set(BackButton);
 
-  onMount(() => {
-    loadGlides();
+  onMount(async () => {
+    const _glide = await getGlide();
+    loadGlides(_glide.lookup);
   });
 
   $: {

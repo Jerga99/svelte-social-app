@@ -1,18 +1,17 @@
 import { fetchGlide } from "@api/glides";
-import { onMount } from "svelte";
 import { writable } from "svelte/store"
-
 
 export function createGlideIdStore(uid, id) {
   const glide = writable(null);
   const loading = writable(true);
 
-  onMount(async () => {
+  async function getGlide() {
     // const loading = writable(true);
     const _glide = await fetchGlide(uid, id);
     loading.set(false);
     glide.set(_glide);
-  })
+    return _glide;
+  }
 
   return {
     glide: {
@@ -20,6 +19,7 @@ export function createGlideIdStore(uid, id) {
     },
     loading: {
       subscribe: loading.subscribe
-    }
+    },
+    getGlide
   }
 }
