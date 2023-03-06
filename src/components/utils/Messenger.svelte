@@ -42,6 +42,18 @@
     }
   }
 
+  function handleImageSelection(e) {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsArrayBuffer(file);
+
+    reader.onload = () => {
+      const buffer = reader.result;
+      const bufferUint8 = new Uint8Array(buffer);
+      console.log(bufferUint8);
+    }
+  }
+
   function autosize(e) {
     const el = e.target;
     el.style.height = "0px";
@@ -85,7 +97,11 @@
           <div class="icon">
             <TiImageOutline />
           </div>
-          <input type="file" name="myfile" />
+          <input 
+            on:change={handleImageSelection}
+            type="file" 
+            name="myfile" 
+          />
         </div>
       </div>
       <div class="flex-it w-32 mt-3 cursor-pointer">
