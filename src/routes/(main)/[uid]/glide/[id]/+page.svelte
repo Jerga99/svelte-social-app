@@ -23,7 +23,7 @@
 
   const { 
     pages, loading: loadingSubglides, 
-    loadGlides, addGlide 
+    loadGlides, addGlide, resetPagination
   } = createSubglideStore();
 
   pageStore.title.set(BackButton);
@@ -34,14 +34,11 @@
     }
   }
 
-  onMount(async () => {
-    const _glide = await getGlide();
-    loadGlides(_glide.lookup);
-  });
+  onMount(getGlide);
 
   function onGlideLoaded(glide) {
-    console.log("Reset pagination!");
-    console.log("Refetch subglides!");
+    resetPagination();
+    loadGlides(glide.lookup);
   }
 
 </script>
