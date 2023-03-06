@@ -13,6 +13,10 @@ export function createGlideIdStore(uid, id) {
     return _glide;
   }
 
+  function incrementSubglidesCount() {
+    glide.update(_glide => ({..._glide, subglidesCount: _glide.subglidesCount + 1}))
+  }
+
   return {
     glide: {
       subscribe: glide.subscribe
@@ -20,6 +24,6 @@ export function createGlideIdStore(uid, id) {
     loading: {
       subscribe: loading.subscribe
     },
-    getGlide
+    getGlide, incrementSubglidesCount
   }
 }
