@@ -4,8 +4,9 @@
   import { fetchGlide } from "@api/glides";
   import { onMount } from "svelte";
 
-  onMount(() => {
-    fetchGlide($page.params.uid, $page.params.id);
+  onMount(async () => {
+    const glide = await fetchGlide($page.params.uid, $page.params.id);
+    console.log(glide);
   })
 </script>
 

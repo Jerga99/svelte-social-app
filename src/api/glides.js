@@ -37,7 +37,17 @@ async function fetchGlide(uid, id) {
   const userGlideSnap = await getDoc(userGlideRef);
   const userGlide = userGlideSnap.data();
 
-  console.log(userGlide.lookup);
+  const glideSnap = await getDoc(userGlide.lookup);
+  const userSnap = await getDoc(userDocRef);;
+
+  const glide = {
+    ...glideSnap.data(),
+    user: userSnap.data(),
+    id: glideSnap.id,
+    lookup: glideSnap.ref.path
+  }
+
+  return glide;
 }
 
 async function fetchGlides(lastGlideDoc, loggedInUser) {
