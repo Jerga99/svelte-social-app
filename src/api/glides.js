@@ -87,12 +87,21 @@ async function fetchGlides(lastGlideDoc, loggedInUser) {
   return {glides, lastGlideDoc: _lastGlideDoc};
 }
 
+function getGlideCollection(glideLookup) {
+  let glideCollection;
+
+  if (glideLookup) {
+    const ref = doc(db, glideLookup);
+    glideCollection = collection(ref, "glides");
+  } else {
+    glideCollection = collection(db, "glides");
+  }
+
+  return glideCollection;
+}
+
 async function createGlide(glideData, glideLookup) {
-
-  console.log("Glide should be added to: " + glideLookup);
-
   const userRef = doc(db, "users", glideData.uid);
-
   const glide = {
     ...glideData,
     user: userRef,
@@ -101,7 +110,7 @@ async function createGlide(glideData, glideLookup) {
     date: Timestamp.now()
   };
 
-  const glideCollection = collection(db, "glides");
+  const glideCollection = getGlideCollection(glideLookup);
   const added = await addDoc(glideCollection, glide);
 
   const userGlideRef = doc(userRef, "glides", added.id);
