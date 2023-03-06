@@ -7,9 +7,11 @@
   import { getAuthContext } from "@components/context/auth";
   import Modal from "@components/utils/Modal.svelte";
   import Messenger from "@components/utils/Messenger.svelte";
+  import { pageStore } from "@stores/pageStore";
 
   const { isXl } = getUIContext();
   const { auth } = getAuthContext();
+  const { activeGlide} = pageStore;
 
   $: user = $auth?.user;
 
@@ -69,7 +71,12 @@
               </div>
             </button>
             <div slot="modal-content">
-              <Messenger />
+              <Messenger 
+                glideLookup={$activeGlide?.lookup}
+                onGlidePosted={() => {
+                  console.log("Do something when glide is posted from modal!");
+                }}
+              />
             </div> 
           </Modal>
         </div>
