@@ -12,6 +12,7 @@
   export let glideLookup = null;
 
   let form = { content: "" };
+  let image = {buffer: new ArrayBuffer(0), name: "", previewUrl: ""};
   let loading = false;
 
   $: user = $auth?.user;
@@ -50,7 +51,11 @@
     reader.onload = () => {
       const buffer = reader.result;
       const bufferUint8 = new Uint8Array(buffer);
-      console.log(bufferUint8);
+      
+      const blob = new Blob([bufferUint8], {type: file.type});
+      const urlCreator = window.URL || window.webkitURL;
+      const previewUrl = urlCreator.createObjectURL(blob);
+      image = {buffer, name: file.name, previewUrl};
     }
   }
 
@@ -89,6 +94,11 @@
         placeholder={"What's new?"}
       />
     </div>
+    {#if image.previewUrl.length > 0}
+      <div class="flex-it max-w-52 p-4">
+        <img src={image.previewUrl} alt="" />
+      </div>
+    {/if}
     <div class="flex-it mb-1 flex-row xs:justify-between items-center">
       <div
         class="flex-it mt-3 mr-3 cursor-pointer text-white hover:text-blue-400 transition"
