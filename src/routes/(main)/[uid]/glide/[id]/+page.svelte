@@ -10,11 +10,14 @@
   import { createSubglideStore } from "@stores/createSubglideStore";
   import { onMount } from "svelte";
   import PaginatedGlides from "@components/glides/PaginatedGlides.svelte";
+  import { fetchGlide } from "@api/glides";
   
   const { 
     glide, loading, 
     getGlide, incrementSubglidesCount 
-  } = createGlideIdStore($page.params.uid, $page.params.id);
+  } = createGlideIdStore(() => {
+    return fetchGlide($page.params.uid, $page.params.id);
+  });
 
   const { 
     pages, loading: loadingSubglides, 
@@ -25,7 +28,7 @@
 
   $: {
     if ($glide && !$loading && $page.params.id !== $glide.id) {
-      console.log("Should reload the page!!!!!!!!");
+      getGlide();
     }
   }
 

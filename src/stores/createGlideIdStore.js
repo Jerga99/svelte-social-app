@@ -1,13 +1,13 @@
-import { fetchGlide } from "@api/glides";
+
 import { writable } from "svelte/store"
 
-export function createGlideIdStore(uid, id) {
+export function createGlideIdStore(getData) {
   const glide = writable(null);
   const loading = writable(true);
 
   async function getGlide() {
-    // const loading = writable(true);
-    const _glide = await fetchGlide(uid, id);
+    loading.set(true);
+    const _glide = await getData();
     loading.set(false);
     glide.set(_glide);
     return _glide;
