@@ -50,12 +50,12 @@
             </nav>
           </div>
 
-          <Modal 
-            let:openModal={openModal}
+          <Modal
             let:closeModal={closeModal}
           >
-            <button 
-              slot="opener" 
+            <button
+              slot="opener"
+              let:openModal={openModal}
               on:click|stopPropagation={openModal}
               class="my-1 flex-it w-10/12 cursor-pointer"
             >
@@ -74,14 +74,14 @@
               </div>
             </button>
             <div slot="modal-content">
-              <Messenger 
+              <Messenger
                 glideLookup={$activeGlide?.lookup}
                 onGlidePosted={(glide) => {
                   $onGlidePosted(glide);
                   closeModal();
                 }}
               />
-            </div> 
+            </div>
           </Modal>
         </div>
         <!-- PROFILE MENU -->
